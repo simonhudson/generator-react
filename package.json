@@ -1,0 +1,29 @@
+{
+  "name": "generator-react",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "generators"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonhudson/generator-react.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/simonhudson/generator-react/issues"
+  },
+  "homepage": "https://github.com/simonhudson/generator-react#readme",
+  "dependencies": {
+    "del": "^3.0.0",
+    "mkdir": "0.0.2",
+    "yeoman-generator": "^2.0.1",
+    "yo": "^2.0.0"
+  }
+}
