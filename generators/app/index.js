@@ -62,5 +62,32 @@ module.exports = class extends Generator {
 		this._logActionComplete(action);
 	}
 	
+	copyDirs() {
+		const action = 'Copy directories';
+		this._logActionStart(action);
+		const dirsToCopy = ['config', 'src'];
+		dirsToCopy.forEach(dir => {
+			this.fs.copy(
+				`${dirs(this).src[dir]}**\\*`,
+				`${dirs(this).dest[dir]}`
+			)
+		});
+		this._logActionComplete(action);
+	}
+	
+	installDependencies() {
+		const action = 'Installing packages from NPM';
+		this._logActionStart(action);
+		this.spawnCommand('npm', ['install']);
+		this._logActionComplete(action);
+	}
+	
+	startApp() {
+		const action = 'Starting application';
+		this._logActionStart(action);
+		this.spawnCommand('npm', ['start']);
+		this._logActionComplete(action);
+	}
+	
 };
 
