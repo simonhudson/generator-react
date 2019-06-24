@@ -136,6 +136,12 @@ module.exports = class extends Generator {
 
     };
 
+	install() {
+		const action = 'Installing dependencies';
+		this._logActionStart(action);
+		this.npmInstall();
+	};
+
     end() {
         const message =
             '\n\n' +
@@ -146,6 +152,7 @@ module.exports = class extends Generator {
 			'*                              *\n' +
             '********************************\n';
         this.log(message);
+		this.spawnCommand('npm run', ['start']);
     };
     
 };
