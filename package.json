@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/simonhudson/generator-react#readme",
   "dependencies": {
-    "del": "^3.0.0",
+    "del": "^5.0.0",
     "mkdir": "0.0.2",
     "yeoman-generator": "^2.0.1",
     "yo": "^2.0.0"
