@@ -1,14 +1,9 @@
 'use strict';
 
 import React, { Component } from 'react';
-import './assets/css/styles.scss';
-import { getClub, getFixtures, getResults } from './api';
-import { transformSquad, transformResults } from './utilities/transform';
-import Home from './components/views/home';
-import Fixtures from './components/views/fixtures';
-import Results from './components/views/results';
-import Squad from './components/views/squad';
-import Header from './components/header';
+import '~/assets/css/styles.scss';
+import Header from '~/components/header';
+import Footer from '~/components/footer';
 
 class App extends Component {
 
@@ -26,7 +21,11 @@ class App extends Component {
         if (!state) return null;
         
         return (
-            <p>Hello world</p>
+            <>
+                <Header />
+                    <p>Hello world</p>
+                <Footer />
+            </>
         );
     }
 }

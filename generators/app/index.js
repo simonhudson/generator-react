@@ -114,6 +114,7 @@ module.exports = class extends Generator {
 				'.gitignore',
 				'.prettierrc',
 				'index.js',
+				'nodemon.json',
 				'package.json',
 				'README.md',
 				'webpack.config.js'
@@ -132,7 +133,7 @@ module.exports = class extends Generator {
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
-    		const dirsToCopy = ['config', 'src', 'components'];
+    		const dirsToCopy = ['config', 'src'];
     		dirsToCopy.forEach(dir => {
     			this.fs.copy(
     				`${dirs(this).src[dir]}**\\*`,
@@ -163,7 +164,7 @@ module.exports = class extends Generator {
 			'*                              *\n' +
             '********************************\n';
         this.log(message);
-		this.spawnCommand('npm run', ['start']);
+		this.spawnCommand('npm run', ['start:dev']);
     };
     
 };
