@@ -106,7 +106,18 @@ module.exports = class extends Generator {
         const copyFiles = () => {
     		const action = 'Copy static files';
     		this._logActionStart(action);
-    		const files = ['.babelrc', '.eslintrc', '.gitignore', '.prettierrc', 'index.js', 'package.json', 'README.md', 'webpack.config.js'];
+    		const files = [
+				'.babelrc',
+				'.env.example',
+				'.env',
+				'.eslintrc',
+				'.gitignore',
+				'.prettierrc',
+				'index.js',
+				'package.json',
+				'README.md',
+				'webpack.config.js'
+			];
     		files.forEach(file => {
     			let destinationDir = dirs(this).dest.root;
     			this.fs.copyTpl(
@@ -121,7 +132,7 @@ module.exports = class extends Generator {
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
-    		const dirsToCopy = ['config', 'src'];
+    		const dirsToCopy = ['config', 'src', 'components'];
     		dirsToCopy.forEach(dir => {
     			this.fs.copy(
     				`${dirs(this).src[dir]}**\\*`,
