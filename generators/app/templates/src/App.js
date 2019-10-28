@@ -23,7 +23,7 @@ class App extends Component {
         return (
             <>
                 <Header />
-                    <p>Hello world</p>
+                <p>Hello world</p>
                 <Footer />
             </>
         );
