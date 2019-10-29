@@ -7,7 +7,7 @@ const Header = props => {
 	if (!props) return null;
 
 	return (
-		<header>
+		<header data-test="header">
 		
 		</header>
 	);

@@ -7,7 +7,7 @@ const Footer = props => {
 	if (!props) return null;
 
 	return (
-		<footer>
+		<footer data-test="footer">
 		
 		</footer>
 	);
