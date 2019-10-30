@@ -14,6 +14,7 @@ describe('Footer', () => {
         initialise();
         expect(objectUnderTest.html()).to.not.be.null;
         expect(objectUnderTest.exists(selector)).to.be.true;
+        expect(objectUnderTest.find(selector).length).to.equal(1);
     });
 
     const initialise = () => objectUnderTest = shallow(<Footer />);
