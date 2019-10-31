@@ -14,7 +14,7 @@ describe('toIsoString: Creates ISO string from date string', () => {
 	
 	it(`should return ISO string when valid date argument passed`, () => {
 		const actual = toIsoString('29 April 1981');
-		expect(actual).to.equal('1981-04-28T23:00:00.000Z');
+		expect(actual).to.equal('1981-04-29T00:00:00.000+01:00');
 	});
 
 });
