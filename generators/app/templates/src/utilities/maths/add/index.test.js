@@ -1,44 +1,33 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const add = require('./index');
 
-module.exports = () => {
+describe(`add: adds numeric values together`, () => {
 	
-	const tests = [
-		{
-			input: { valueB: 3 },
-			expected: null
-		},
-		{
-			input: { valueA: 'string' },
-			expected: null
-		},
-		{
-			input: { valueA: 5 },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: [1,2,3] },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: 3 },
-			expected: 8
-		},
-		{
-			input: { valueA: -5, valueB: 3 },
-			expected: -2
-		}
-	];
-	
-	test('add()', 'adds numbers', () => {
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { valueA, valueB } = input;
-			const actual = add(valueA, valueB);
-			expect(actual).toEqual(expected);
-		});
+	it(`should return null when only one integer value is passed`, () => {
+		const actual = add(3);
+		expect(actual).to.equal(null);
 	});
-
-};
+	
+	it(`should return null when only one string value is passed`, () => {
+		const actual = add('hello');
+		expect(actual).to.equal(null);
+	});
+	
+	it(`should return value when two numeric values are passed`, () => {
+		const actual = add(5, '3');
+		expect(actual).to.equal(8);
+	});
+	
+	it(`should return value when two integer values are passed`, () => {
+		const actual = add(5, 4);
+		expect(actual).to.equal(9);
+	});
+	
+	it(`should handle negative values`, () => {
+		const actual = add(-5, 3);
+		expect(actual).to.equal(-2);
+	});
+	
+});
