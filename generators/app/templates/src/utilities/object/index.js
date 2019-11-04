@@ -1,3 +1,6 @@
 'use strict';
 
-module.exports = require('../exportMethods')('object');
+module.exports = {
+	cleanUp: require('./cleanUp'),
+	orderByKey: require('./orderByKey')
+};

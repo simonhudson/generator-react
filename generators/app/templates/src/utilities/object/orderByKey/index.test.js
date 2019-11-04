@@ -1,38 +1,32 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const orderByKey = require('./index');
-
-module.exports = () => {
 	
-	test('orderByKey()', 'order object based on key name', function() {
+describe('orderByKey: Order object based on key name', () => {
 
-	const tests = [
-			{ input: 'string', expected: null },
-			{ input: [], expected: null },
-			{ input: true, expected: null },
-			{
-				input: {
-					b: 'value b',
-					d: 'value d',
-					a: 'value a',
-					c: 'value c'
-				},
-				expected: {
-					a: 'value a',
-					b: 'value b',
-					c: 'value c',
-					d: 'value d'
-				}
-			}
-		];
-
-		tests.forEach(test => {
-			const { input, expected } = test;
+	it(`should return null when input is not an object`, () => {
+		['string', [], true, null].forEach(input => {
 			const actual = orderByKey(input);
-			expect(actual).toDeepEqual(expected);
+			expect(actual).to.deep.equal(null);
 		});
-		
+	});
+	
+	it(`should return an object ordered by key`, () => {
+		const input = {
+			b: 'value b',
+			d: 'value d',
+			a: 'value a',
+			c: 'value c'
+		};
+		const expected = {
+			a: 'value a',
+			b: 'value b',
+			c: 'value c',
+			d: 'value d'
+		};
+		const actual = orderByKey(input);
+		expect(actual).to.deep.equal(expected);
 	});
 
-};
+});

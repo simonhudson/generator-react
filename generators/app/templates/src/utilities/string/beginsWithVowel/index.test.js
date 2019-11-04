@@ -1,27 +1,29 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const beginsWithVowel = require('./index');
 
-module.exports = () => {
+describe('beginsWithVowel: Checks if string begins with a vowel', () => {
 	
-	test('beginsWithVowel()', 'checks if string begins with a vowel', () => {
-	
-		const tests = [
-			{ input: null, expected: false },
-			{ input: true, expected: false },
-			{ input: 10, expected: false },
-			{ input: 'Hello', expected: false },
-			{ input: 'Goodbye', expected: false },
-			{ input: 'Error', expected: true },
-			{ input: 'apple', expected: true }
-		];
-	
-		tests.forEach(test => {
-			const { input, expected } = test;
+	it(`should return false when input is not a string`, () => {
+		[null, true, 10].forEach(input => {
 			const actual = beginsWithVowel(input);
-			expect(actual).toEqual(expected);
+			expect(actual).to.equal(false);
 		});
 	});
-
-};
+	
+	it(`should return false when string does not begin with vowel`, () => {
+		['Hello', 'goodbye'].forEach(input => {
+			const actual = beginsWithVowel(input);
+			expect(actual).to.equal(false);
+		});
+	});
+	
+	it(`should return true when string does begin with vowel`, () => {
+		['Apple', 'egg'].forEach(input => {
+			const actual = beginsWithVowel(input);
+			expect(actual).to.equal(true);
+		});
+	});
+	
+});

@@ -1,35 +1,20 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const stripWhiteSpace = require('./index');
 
-module.exports = () => {
-
-	test('stripWhiteSpace()', 'strip white space from string', () => {
+describe('stripWhiteSpace: Strip white space from string', () => {
 		
-		const ORIGINAL_STRING = ' lorem Ipsum  dolor   foo  ';
-
-		const tests = [
-			{
-				input:  1,
-				expected: 1
-			},
-			{
-				input:  true,
-				expected: true 
-			},
-			{
-				input:  ORIGINAL_STRING,
-				expected: 'loremIpsumdolorfoo'
-			}
-		];
-
-		tests.forEach(test => {
-			const { input, expected } = test;
+	it(`should return unchanged input if invalid`, () => {
+		[[1,2,3], true, {}].forEach(input => {
 			const actual = stripWhiteSpace(input);
-			expect(actual).toEqual(expected);
+			expect(actual).to.equal(input);
 		});
-
+	});
+	
+	it(`should return string with whitespace removed`, () => {
+		const actual = stripWhiteSpace(' lorem Ipsum  dolor   foo  ');
+		expect(actual).to.equal('loremIpsumdolorfoo');
 	});
 
-};
+});

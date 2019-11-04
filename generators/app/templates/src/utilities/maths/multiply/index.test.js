@@ -1,46 +1,33 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const multiply = require('./index');
 
-module.exports = () => {
+describe(`multiply: multiplies numeric values together`, () => {
 	
-	const tests = [
-		{
-			input: { valueB: 3 },
-			expected: null
-		},
-		{
-			input: { valueA: 'string' },
-			expected: null
-		},
-		{
-			input: { valueA: 5 },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: [1,2,3] },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: 3 },
-			expected: 15
-		},
-		{
-			input: { valueA: -5, valueB: 3 },
-			expected: -15
-		}
-	];
-	
-	test('multiply()', 'multiplies numbers', () => {
-		
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { valueA, valueB } = input;
-			const actual = multiply(valueA, valueB);
-			expect(actual).toEqual(expected);
-		});
-		
+	it(`should return null when only one integer value is passed`, () => {
+		const actual = multiply(3);
+		expect(actual).to.equal(null);
 	});
-
-};
+	
+	it(`should return null when only one string value is passed`, () => {
+		const actual = multiply('hello');
+		expect(actual).to.equal(null);
+	});
+	
+	it(`should return value when two numeric values are passed`, () => {
+		const actual = multiply(5, '3');
+		expect(actual).to.equal(15);
+	});
+	
+	it(`should return value when two integer values are passed`, () => {
+		const actual = multiply(5, 4);
+		expect(actual).to.equal(20);
+	});
+	
+	it(`should handle negative values`, () => {
+		const actual = multiply(-5, 3);
+		expect(actual).to.equal(-15);
+	});
+	
+});

@@ -1,26 +1,35 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const isEven = require('./index');
 
-module.exports = () => {
+describe('isEven: Checks if number is even', () => {
 	
-	test('isEven()', 'checks if number is even', () => {
-
-		const tests = [
-			{ input: 'string', expected: null },
-			{ input: [1,2,3], expected: null },
-			{ input: true, expected: null },
-			{ input: 25, expected: false },
-			{ input: 26, expected: true }
-		];
-
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const actual = isEven(input);
-			expect(actual).toEqual(expected);
+	it(`should return null if value is not numeric`, () => {
+		['string', [1,2,3], {}].forEach(value => {
+			const actual = isEven(value);
+			expect(actual).to.equal(null);
 		});
-
+	});
+	
+	it(`should return true if numeric integer value is even`, () => {
+		const actual = isEven(4);
+		expect(actual).to.equal(true);
+	});
+	
+	it(`should return false if numeric integer value is not even`, () => {
+		const actual = isEven(9);
+		expect(actual).to.equal(false);
+	});
+	
+	it(`should return true if numeric string value is even`, () => {
+		const actual = isEven('4');
+		expect(actual).to.equal(true);
+	});
+	
+	it(`should return false if numeric string value is not even`, () => {
+		const actual = isEven('9');
+		expect(actual).to.equal(false);
 	});
 
-};
+});

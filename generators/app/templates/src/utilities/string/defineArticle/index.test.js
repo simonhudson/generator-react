@@ -1,33 +1,43 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const defineArticle = require('./index');
 
-module.exports = () => {
+describe('defineArticle: Defines article (e.g "a" / "an") preceding a string', () => {
 	
-	test('defineArticle()', 'defines article (e.g "a" / "an") preceding a string', () => {
-	
-		const tests = [
-			{ input: { str: null }, expected: null },
-			{ input: { str: true }, expected: null },
-			{ input: { str: 10 }, expected: null },
-			{ input: { str: '' }, expected: null },
-			{ input: { str: 'Hello' }, expected: 'a' },
-			{ input: { str: 'goodbye' }, expected: 'a' },
-			{ input: { str: 'Hello', capitalise: true }, expected: 'A' },
-			{ input: { str: 'goodbye', capitalise: true }, expected: 'A' },
-			{ input: { str: 'Error' }, expected: 'an' },
-			{ input: { str: 'apple' }, expected: 'an' },
-			{ input: { str: 'Error', capitalise: true }, expected: 'An' },
-			{ input: { str: 'apple', capitalise: true }, expected: 'An' }
-		];
-	
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { str, capitalise } = input;
-			const actual = defineArticle(str, capitalise);
-			expect(actual).toEqual(expected);
+	it(`should return null when input is invalid or empty string`, () => {
+		[null, true, 10, ''].forEach(input => {
+			const actual = defineArticle(input);
+			expect(actual).to.equal(null);
 		});
 	});
-
-};
+	
+	it(`should return 'a' when input does not start with vowel`, () => {
+		['Hello', 'goodbye'].forEach(input => {
+			const actual = defineArticle(input);
+			expect(actual).to.equal('a');
+		});
+	});
+	
+	it(`should return 'A' when input does not start with vowel and capitalise argument is true`, () => {
+		['Hello', 'goodbye'].forEach(input => {
+			const actual = defineArticle(input, true);
+			expect(actual).to.equal('A');
+		});
+	});
+	
+	it(`should return 'an' when input does start with vowel`, () => {
+		['Apple', 'egg'].forEach(input => {
+			const actual = defineArticle(input);
+			expect(actual).to.equal('an');
+		});
+	});
+	
+	it(`should return 'An' when input does start with vowel and capitalise argument is true`, () => {
+		['Apple', 'egg'].forEach(input => {
+			const actual = defineArticle(input, true);
+			expect(actual).to.equal('An');
+		});
+	});
+	
+});

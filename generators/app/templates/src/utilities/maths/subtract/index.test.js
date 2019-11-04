@@ -1,44 +1,33 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const subtract = require('./index');
 
-module.exports = () => {
+describe(`subtract: subtracts numeric values`, () => {
 	
-	const tests = [
-		{
-			input: { valueB: 3 },
-			expected: null
-		},
-		{
-			input: { valueA: 'string' },
-			expected: null
-		},
-		{
-			input: { valueA: 5 },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: [1,2,3] },
-			expected: null
-		},
-		{
-			input: { valueA: 5, valueB: 3 },
-			expected: 2
-		},
-		{
-			input: { valueA: -5, valueB: 3 },
-			expected: -8
-		}
-	];
-	
-	test('subtract()', 'subtracts numbers', () => {
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { valueA, valueB } = input;
-			const actual = subtract(valueA, valueB);
-			expect(actual).toEqual(expected);
-		});
+	it(`should return null when only one integer value is passed`, () => {
+		const actual = subtract(3);
+		expect(actual).to.equal(null);
 	});
-
-};
+	
+	it(`should return null when only one string value is passed`, () => {
+		const actual = subtract('hello');
+		expect(actual).to.equal(null);
+	});
+	
+	it(`should return value when two numeric values are passed`, () => {
+		const actual = subtract(5, '3');
+		expect(actual).to.equal(2);
+	});
+	
+	it(`should return value when two integer values are passed`, () => {
+		const actual = subtract(15, 4);
+		expect(actual).to.equal(11);
+	});
+	
+	it(`should handle negative values`, () => {
+		const actual = subtract(-5, 3);
+		expect(actual).to.equal(-8);
+	});
+	
+});

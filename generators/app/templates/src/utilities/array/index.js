@@ -1,3 +1,5 @@
 'use strict';
 
-module.exports = require('../exportMethods')('array');
+module.exports = {
+	hasItems: require('./hasItems')
+};

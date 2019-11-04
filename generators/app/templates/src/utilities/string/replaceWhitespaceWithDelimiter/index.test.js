@@ -1,49 +1,27 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const replaceWhiteSpaceWithDelimiter = require('./index');
 
-module.exports = () => {
+const ORIGINAL_STRING = 'lorem Ipsum  dolor   foo'; 
 
-	test('replaceWhiteSpaceWithDelimiter()', 'replaces spaces in string with specified delimiter', () => {
-		
-		const ORIGINAL_STRING = 'lorem Ipsum  dolor   foo';
-
-		const tests = [
-			{
-				input: {
-					string: [1,2,3],
-				},
-				expected: [1,2,3]
-			},
-			{
-				input: {
-					string: true, delimiter: '_'
-				},
-				expected: true
-			},
-			{
-				input: {
-					string: ORIGINAL_STRING,
-				},
-				expected: 'lorem-Ipsum-dolor-foo'
-			},
-			{
-				input: {
-					string: ORIGINAL_STRING,
-					delimiter: '+'
-				},
-				expected: 'lorem+Ipsum+dolor+foo'
-			}
-		];
-
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { string, delimiter } = input;
-			const actual = replaceWhiteSpaceWithDelimiter(string, delimiter);
-			expect(actual).toDeepEqual(expected);
+describe('replaceWhiteSpaceWithDelimiter: Replaces spaces in string with specified delimiter', () => {
+	
+	it(`should return unchanged input if invalid`, () => {
+		[[1,2,3], true, {}].forEach(input => {
+			const actual = replaceWhiteSpaceWithDelimiter(input);
+			expect(actual).to.equal(input);
 		});
-
+	});
+	
+	it(`should return formatted string using default delimiter`, () => {
+		const actual = replaceWhiteSpaceWithDelimiter(ORIGINAL_STRING);
+		expect(actual).to.equal('lorem-Ipsum-dolor-foo');
+	});
+	
+	it(`should return formatted string using specified delimiter`, () => {
+		const actual = replaceWhiteSpaceWithDelimiter(ORIGINAL_STRING, '+');
+		expect(actual).to.equal('lorem+Ipsum+dolor+foo');
 	});
 
-};
+});

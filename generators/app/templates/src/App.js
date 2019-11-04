@@ -5,6 +5,8 @@ import '~/assets/css/styles.scss';
 import Header from '~/components/header';
 import Footer from '~/components/footer';
 
+const utils = require('~/utilities');
+
 class App extends Component {
 
     constructor(props) {

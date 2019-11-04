@@ -1,28 +1,36 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const unescapeHtml = require('./index');
 
-module.exports = () => {
+describe('unescapeHtml(): Unescapes HTML special characters', () => {
 	
-	test('unescapeHtml()', 'unescapes HTML special characters', () => {
-	
-		const tests = [
-			{ input: { str: null }, expected: null },
-			{ input: { str: true }, expected: null },
-			{ input: { str: 10 }, expected: null },
-			{ input: { str: '' }, expected: null },
-			{ input: { str: `&lt;div class=&#39;my-element&#39;&gt;Hello&lt;/div&gt;` }, expected: `<div class='my-element'>Hello</div>` },
-			{ input: { str: '&lt;div class=&quot;my-element&quot;&gt;Hello&lt;/div&gt;' }, expected: '<div class="my-element">Hello</div>' },
-			{ input: { str: 'www.foo.com/?a=1&amp;b=2' }, expected: 'www.foo.com/?a=1&b=2' }
-		];
-	
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { str } = input;
-			const actual = unescapeHtml(str);
-			expect(actual).toEqual(expected);
+	it(`should return null when input is invalid or empty string`, () => {
+		[null, true, 10, ''].forEach(input => {
+			const actual = unescapeHtml(input);
+			expect(actual).to.equal(null);
 		});
 	});
-
-};
+	
+	it(`should unescape single-quoted HTML`, () => {
+		const input = `&lt;div class=&#39;my-element&#39;&gt;Hello&lt;/div&gt;`;
+		const expected = `<div class='my-element'>Hello</div>`;
+		const actual = unescapeHtml(input);
+		expect(actual).to.equal(expected);
+	});
+	
+	it(`should unescape double-quoted HTML`, () => {
+		const input = '&lt;div class=&quot;my-element&quot;&gt;Hello&lt;/div&gt;';
+		const expected = '<div class="my-element">Hello</div>';
+		const actual = unescapeHtml(input);
+		expect(actual).to.equal(expected);
+	});
+	
+	it(`should unescape querystring`, () => {
+		const input = 'www.foo.com/?a=1&amp;b=2';
+		const expected = 'www.foo.com/?a=1&b=2';
+		const actual = unescapeHtml(input);
+		expect(actual).to.equal(expected);
+	});
+	
+});

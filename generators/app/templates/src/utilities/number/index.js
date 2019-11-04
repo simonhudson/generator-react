@@ -1,3 +1,6 @@
 'use strict';
 
-module.exports = require('../exportMethods')('number');
+module.exports = {
+	isEven: require('./isEven'),
+	isOdd: require('./isOdd')
+};

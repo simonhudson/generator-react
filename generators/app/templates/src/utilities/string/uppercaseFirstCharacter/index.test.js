@@ -1,26 +1,20 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const uppercaseFirstCharacter = require('./index');
 
-module.exports = () => {
-	
-	test('uppercaseFirstCharacter()', 'converts first character of string to uppercase', () => {
+describe('uppercaseFirstCharacter: Converts first character of string to uppercase', () => {
 
-		const tests = [
-			{ input: 1, expected: null },
-			{ input: true, expected: null },
-			{ input: [1,2,3], expected: null },
-			{ input: {foo: 1 }, expected: null },
-			{ input: 'lorem Ipsum', expected: 'Lorem Ipsum' }
-		];
-
-		tests.forEach(test => {
-			const { input, expected } = test;
+	it(`should return null when input is invalid or empty string`, () => {
+		[null, true, 10, ''].forEach(input => {
 			const actual = uppercaseFirstCharacter(input);
-			expect(actual).toEqual(expected);
+			expect(actual).to.equal(null);
 		});
-
+	});
+	
+	it(`should return string with uppercase first character`, () => {
+		const actual = uppercaseFirstCharacter('lorem Ipsum');
+		expect(actual).to.equal('Lorem Ipsum');
 	});
 
-};
+});

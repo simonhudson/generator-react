@@ -1,26 +1,20 @@
 'use strict';
 
-const { expect, test } = require('../../../expect');
+import { expect } from 'chai';
 const stripHtmlTags = require('./index');
 
-module.exports = () => {
+describe('stripHtmlTags: Remove opening/closing HTML tags from string', () => {
 	
-	test('unescapeHtml()', 'unescapes HTML special characters', () => {
-	
-		const tests = [
-			{ input: { str: null }, expected: null },
-			{ input: { str: true }, expected: null },
-			{ input: { str: 10 }, expected: null },
-			{ input: { str: '' }, expected: null },
-			{ input: { str: `<div class='my-element'>Hello</div>` }, expected: `div class='my-element'Hello/div` }
-		];
-	
-		tests.forEach(test => {
-			const { input, expected } = test;
-			const { str } = input;
-			const actual = stripHtmlTags(str);
-			expect(actual).toEqual(expected);
+	it(`should return null when input is invalid or empty string`, () => {
+		[null, true, 10, ''].forEach(input => {
+			const actual = stripHtmlTags(input);
+			expect(actual).to.equal(null);
 		});
 	});
+	
+	it(`should strip opening/closing HTML tags from string`, () => {
+		const actual = stripHtmlTags(`<div class='my-element'>Hello</div>`);
+		expect(actual).to.equal(`div class='my-element'Hello/div`);
+	});
 
-};
+});
