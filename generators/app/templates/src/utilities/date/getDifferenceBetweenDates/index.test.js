@@ -3,13 +3,6 @@
 import { expect } from 'chai';
 const getDifferenceBetweenDates = require('./index');
 
-const NOW = new Date();
-const nowDate = {
-	day: NOW.getUTCDate(),
-	month: NOW.getUTCMonth() + 1,
-	year: NOW.getUTCFullYear()
-};
-
 describe('getDifferenceBetweenDates: Gets difference between dates as specified value', () => {
 	
 	it(`should return null when no date argument passed`, () => {

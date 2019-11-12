@@ -4,7 +4,7 @@ export function getSessionStorage(key) {
 	if (!!key && hasSessionStorage()) return sessionStorage.getItem(key);
 }
 
-export function setSessionStorage(key, value) => {
+export function setSessionStorage(key, value) {
 	if (!!key && !!value && hasSessionStorage()) sessionStorage.setItem(key, value + ''); // Coerce value to a string
 }
 
@@ -17,14 +17,14 @@ export function clearSessionStorage() {
 }
 
 export function populateSessionStorageByObject(obj) {
-	if (!!obj && hasSessionStorage()) for (let key in obj) set(key, obj[key]);
+	if (!!obj && hasSessionStorage()) for (let key in obj) setSessionStorage(key, obj[key]);
 }
 
 export function getSessionStorageByNamespace(namespace) {
 	if (!namespace || !hasSessionStorage()) return;
 	let data = {};
 	for (let item in sessionStorage) {
-		if (item.indexOf(namespace) > -1) data[item] = get(item);
+		if (item.indexOf(namespace) > -1) data[item] = getSessionStorage(item);
 	}
 	return data;
 }
@@ -32,6 +32,6 @@ export function getSessionStorageByNamespace(namespace) {
 export function removeSessionStorageByNamespace(namespace) {
 	if (!namespace || !hasSessionStorage()) return;
 	for (let item in sessionStorage) {
-		if (item.indexOf(namespace) > -1) remove(item);
+		if (item.indexOf(namespace) > -1) removeSessionStorage(item);
 	}
 }

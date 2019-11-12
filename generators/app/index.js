@@ -9,12 +9,14 @@ const dirs = self => {
 		src: {
 			config: `${self.templatePath()}\\config\\`,
 			root: `${self.templatePath()}\\`,
-			src: `${self.templatePath()}\\src\\`
+			src: `${self.templatePath()}\\src\\`,
+			scripts: `${self.templatePath()}\\scripts\\`
 		},
 		dest: {
 			config: `${self.destinationPath()}\\config\\`,
 			root: `${self.destinationPath()}\\`,
-			src: `${self.destinationPath()}\\src\\`
+			src: `${self.destinationPath()}\\src\\`,
+			scripts: `${self.destinationPath()}\\scripts\\`
 		}
 	}
 };
@@ -133,7 +135,7 @@ module.exports = class extends Generator {
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
-    		const dirsToCopy = ['config', 'src'];
+    		const dirsToCopy = ['config', 'src', 'scripts'];
     		dirsToCopy.forEach(dir => {
     			this.fs.copy(
     				`${dirs(this).src[dir]}**\\*`,
