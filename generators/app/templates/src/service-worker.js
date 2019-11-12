@@ -1,13 +1,14 @@
 'use strict';
 
-self.oninstall = function() {
-    caches.open('fayeFrontEndV1').then(function(cache) {
+self.oninstall = () => {
+    caches.open('fayeFrontEndV1').then(cache => {
         cache.addAll([])
         .catch();
     })
-    .catch()
-}
+    .catch();
+};
 
-self.onactivate = function(event) {
-    console.log('Service worker activated!');
-}
+self.onactivate = e => {
+    /* eslint-disable no-console */
+    console.log('Service worker activated.');
+};
