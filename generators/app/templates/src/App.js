@@ -12,7 +12,12 @@ class App extends Component {
         this.state = {};
     }
 
+    registerServiceWorker = () => {
+        if (navigator.serviceWorker) navigator.serviceWorker.register('service-worker.js');
+    }
+
     componentDidMount = () => {
+        this.registerServiceWorker();
     }
 
     render = () => {
