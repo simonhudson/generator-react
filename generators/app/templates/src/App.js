@@ -13,7 +13,14 @@ class App extends Component {
     }
 
     registerServiceWorker = () => {
-        if (navigator.serviceWorker) navigator.serviceWorker.register('service-worker.js');
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register('service-worker.js').then(registration => {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, (err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        }
     }
 
     componentDidMount = () => {
