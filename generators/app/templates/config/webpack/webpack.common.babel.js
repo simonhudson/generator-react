@@ -47,7 +47,7 @@ module.exports = {
             }
         }),
         new CopyWebpackPlugin([
-            { from: 'service-worker.js' }
+            { from: 'src/service-worker.js' }
         ])
     ]
 };
