@@ -25,4 +25,4 @@ OR
 2. Navigate to the working directory of your project
 3. Run `yo react`
 
-You will then be able to run through the Generator.
+Once the Generator has created the files and installed any dependencies, it will automatically start your application on port `https://localhost:5000`
