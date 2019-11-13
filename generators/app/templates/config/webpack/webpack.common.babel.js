@@ -2,7 +2,6 @@
 
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 import paths from './paths';
 import rules from './rules';
@@ -45,9 +44,6 @@ module.exports = {
                 removeComments: true,
                 removeAttributeQuotes: true
             }
-        }),
-        new CopyWebpackPlugin([
-            { from: 'src/service-worker.js' }
-        ])
+        })
     ]
 };

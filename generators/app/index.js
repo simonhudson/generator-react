@@ -10,13 +10,15 @@ const dirs = self => {
 			config: `${self.templatePath()}\\config\\`,
 			root: `${self.templatePath()}\\`,
 			src: `${self.templatePath()}\\src\\`,
-			scripts: `${self.templatePath()}\\scripts\\`
+			scripts: `${self.templatePath()}\\scripts\\`,
+			utilities: `${self.templatePath()}\\utilities\\`
 		},
 		dest: {
 			config: `${self.destinationPath()}\\config\\`,
 			root: `${self.destinationPath()}\\`,
 			src: `${self.destinationPath()}\\src\\`,
-			scripts: `${self.destinationPath()}\\scripts\\`
+			scripts: `${self.destinationPath()}\\scripts\\`,
+			utilities: `${self.destinationPath()}\\src\\utilities\\`
 		}
 	}
 };
@@ -93,11 +95,18 @@ module.exports = class extends Generator {
                 name: "name",
                 message: "Your project name",
                 default: this.appname // Default to current folder name
+            },
+			{
+                type: "input",
+                name: "copyUtilities",
+                message: "Do you want to copy the utilities directory? (Y/N)",
+                default: "Y"
             }
         ]);
         this.config.set({
             'projectName' : answers.name,
-            'projectNameSlug': toSlug(answers.name)
+            'projectNameSlug': toSlug(answers.name),
+			'copyUtilities': answers.copyUtilities.toLowerCase()
         });
         this.log(this.config.get('projectName'));
         this.log(this.config.get('projectNameSlug'));
@@ -142,6 +151,12 @@ module.exports = class extends Generator {
     				`${dirs(this).dest[dir]}`
     			)
     		});
+			if (this.config.get('copyUtilities') === 'y') {
+				this.fs.copy(
+    				`${dirs(this).src.utilities}**\\*`,
+    				`${dirs(this).dest.utilities}`
+    			)
+			}
     		this._logActionComplete(action);
     	};
         
