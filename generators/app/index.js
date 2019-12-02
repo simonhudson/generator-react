@@ -120,7 +120,6 @@ module.exports = class extends Generator {
     		const files = [
 				'.babelrc',
 				'.env.example',
-				'.env',
 				'.eslintrc',
 				'.gitignore',
 				'.prettierrc',
