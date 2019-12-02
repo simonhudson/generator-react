@@ -1,8 +1,8 @@
 'use strict';
 
-var Generator = require('yeoman-generator');
-var del = require('del');
-var mkdir = require('mkdirp');
+const Generator = require('yeoman-generator');
+const del = require('del');
+const mkdir = require('mkdirp');
 
 const dirs = self => {
 	return {
@@ -53,7 +53,7 @@ module.exports = class extends Generator {
 
 	_logActionStart(action) { return this.log(`START ${action}`); }
 	_logActionComplete(action) { return this.log(`COMPLETED ${action}`); }
-    
+
 	_writeFileConfig() {
         return {
             projectName: this.config.get('projectName'),
@@ -75,7 +75,7 @@ module.exports = class extends Generator {
                 '************************************************************\n';
             this.log(message);
         };
-        
+
         const clean = () => {
             const action = 'Clean workspace';
             this._logActionStart(action);
@@ -85,7 +85,7 @@ module.exports = class extends Generator {
 
         greeting();
         clean();
-		
+
     }
 
     async prompting() {
@@ -140,7 +140,7 @@ module.exports = class extends Generator {
     		});
     		this._logActionComplete(action);
         };
-        
+
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
@@ -159,7 +159,7 @@ module.exports = class extends Generator {
 			}
     		this._logActionComplete(action);
     	};
-        
+
         copyFiles();
         copyDirs();
 
@@ -183,5 +183,5 @@ module.exports = class extends Generator {
         this.log(message);
 		this.spawnCommand('npm run', ['start:dev']);
     };
-    
+
 };
