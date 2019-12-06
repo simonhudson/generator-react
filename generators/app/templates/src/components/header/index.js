@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import './css/styles.scss';
 
 const Header = props => {
 
@@ -8,7 +9,7 @@ const Header = props => {
 
 	return (
 		<header data-test="header">
-		
+
 		</header>
 	);
 

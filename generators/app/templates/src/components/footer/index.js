@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import './css/styles.scss';
 
 const Footer = props => {
 
@@ -8,7 +9,7 @@ const Footer = props => {
 
 	return (
 		<footer data-test="footer">
-		
+
 		</footer>
 	);
 
