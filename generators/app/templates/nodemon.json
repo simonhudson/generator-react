@@ -4,5 +4,5 @@
 	"watch": [
 		"src/"
 	],
-	"ext": "js css html scss"
+	"ext": "js css html css scss json"
 }
