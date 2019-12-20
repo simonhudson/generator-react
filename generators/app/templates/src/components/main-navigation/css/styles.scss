@@ -1,0 +1,61 @@
+@import 'assets/css/styles';
+
+.main-navigation {
+    @include animation-defaults();
+    @include box-shadow();
+    @include position-tl(0, -65%);
+    background: #eee;
+    height: 100vh;
+    width: 65%;
+
+    @include media(tablet-l) {
+        @include width-full();
+        background: transparent;
+        box-shadow: none;
+        height: auto;
+        left: auto;
+        position: static;
+        top: auto;
+    }
+}
+
+.main-navigation--is-hidden {
+    animation-name: slide-out-to-left;
+}
+
+.main-navigation--is-visible {
+    animation-name: slide-in-from-left;
+}
+
+.main-navigation__list {
+    list-style: none;
+
+    @include media(tablet-l) {
+        display: flex;
+    }
+
+}
+
+.main-navigation__item {
+}
+
+.main-navigation__link {
+    @include border-b();
+    @include padding();
+    @include semi-strong();
+    @include transition('background');
+    background: transparent;
+    color: palette(primary, bodyText);
+    display: block;
+
+    &:hover,
+    &:focus {
+        background: #dfdfdf;
+    }
+
+    @include media(tablet-l) {
+        border: 0;
+        display: inline-block;
+    }
+
+}

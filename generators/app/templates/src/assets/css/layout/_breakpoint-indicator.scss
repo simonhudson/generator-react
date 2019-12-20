@@ -1,6 +1,6 @@
 body::after {
 	@include position-bl();
-	@include visuallyhidden();
+	@include visually-hidden();
 	display: inline-block;
 	content: 'mobile';
 	

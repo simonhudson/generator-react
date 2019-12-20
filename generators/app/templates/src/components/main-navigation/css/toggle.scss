@@ -1,0 +1,36 @@
+@import 'assets/css/styles';
+
+.main-navigation__toggle {
+    @include position-tr(10px);
+    @include no-padding();
+    background: 0;
+    border: 0;
+    height: 30px;
+    width: 30px;
+
+    @include media(tablet-l) {
+        display: none;
+    }
+
+    span {
+        @include animation-defaults();
+        background: palette(primary, bodyText);
+        display: block;
+        height: 5px;
+        width: 100%;
+
+        &:not(:last-of-type) {
+            @include margin-b-xsm();
+        }
+
+    }
+
+    &.main-navigation-is-visible {
+
+        span {
+
+        }
+
+    }
+
+}
