@@ -5,6 +5,7 @@ import { mount } from 'enzyme';
 import { expect } from 'chai';
 import Alert from './index';
 const cloneDeep = require('lodash/cloneDeep');
+import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
 
 const baseProps = {
     type: 'warning'
@@ -20,26 +21,20 @@ describe('Alert', () => {
         const props = cloneDeep(baseProps);
         delete props.type;
         initialise(props);
-        expect(objectUnderTest.html()).to.be.null;
-        expect(objectUnderTest.exists(selector)).to.be.false;
-        expect(objectUnderTest.find(selector).length).to.equal(0);
+        assertElementDoesNotExist(objectUnderTest, selector);
     });
 
     it('should return null when invalid type prop passed', () => {
         const props = cloneDeep(baseProps);
         props.type = 'foo';
         initialise(props);
-        expect(objectUnderTest.html()).to.be.null;
-        expect(objectUnderTest.exists(selector)).to.be.false;
-        expect(objectUnderTest.find(selector).length).to.equal(0);
+        assertElementDoesNotExist(objectUnderTest, selector);
     });
 
     it('should render as expected', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
-        expect(objectUnderTest.html()).to.not.be.null;
-        expect(objectUnderTest.exists(selector)).to.be.true;
-        expect(objectUnderTest.find(selector).length).to.equal(1);
+        assertElementExists(objectUnderTest, selector);
         expect(objectUnderTest.find(selector).hasClass('alert--warning')).to.equal(true);
     });
 
@@ -47,10 +42,9 @@ describe('Alert', () => {
         const props = cloneDeep(baseProps);
         props.hasIcon = true;
         initialise(props);
-        expect(objectUnderTest.html()).to.not.be.null;
+        assertElementExists(objectUnderTest, selector);
+        assertElementExists(objectUnderTest, icon);
         expect(objectUnderTest.find(selector).hasClass('alert--has-icon')).to.equal(true);
-        expect(objectUnderTest.exists(icon)).to.be.true;
-        expect(objectUnderTest.find(icon).length).to.equal(1);
         expect(objectUnderTest.find(icon).hasClass('fa-exclamation-triangle')).to.equal(true);
     });
 

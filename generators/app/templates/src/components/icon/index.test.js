@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import Icon from './index';
 const cloneDeep = require('lodash/cloneDeep');
+import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
 
 const baseProps = {
     type: 'bars'
@@ -19,17 +20,13 @@ describe('Icon', () => {
         const props = cloneDeep(baseProps);
         delete props.type;
         initialise(props);
-        expect(objectUnderTest.html()).to.be.null;
-        expect(objectUnderTest.exists(selector)).to.be.false;
-        expect(objectUnderTest.find(selector).length).to.equal(0);
+        assertElementDoesNotExist(objectUnderTest, selector);
     });
 
     it('should render as expected', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
-        expect(objectUnderTest.html()).to.not.be.null;
-        expect(objectUnderTest.exists(selector)).to.be.true;
-        expect(objectUnderTest.find(selector).length).to.equal(1);
+        assertElementExists(objectUnderTest, selector);
         expect(objectUnderTest.find(selector).hasClass('fa-bars')).to.equal(true);
     });
 
