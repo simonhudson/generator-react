@@ -7,10 +7,22 @@ $alertTypes: 'info', 'warning', 'error', 'success';
 
 	@each $type in $alertTypes {
 		&--#{$type} {
-			background-color: rgba(palette(alert, #{$type}), .5);
+			background-color: rgba(palette(alert, #{$type}), .15);
 			border: 1px solid palette(alert, #{$type});
 			color: palette(alert, #{$type});
 		}
+
+		&.alert--has-icon {
+			padding-left: rem($spacing * 3);
+			position: relative;
+
+			.fa {
+				@include position-tl($spacing);
+				font-size: rem($spacing * 1.5);
+			}
+
+		}
+
 	}
 
 }
