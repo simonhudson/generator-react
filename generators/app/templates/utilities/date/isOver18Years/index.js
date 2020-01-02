@@ -1,11 +1,12 @@
 'use strict';
 
 const moment = require('moment');
+const toISOString = require('~/utilities/date/toISOString');
 
 module.exports = date => {
 	if (!date) return null;
-	date = new Date(date);
+	date = moment(toISOString(date));
 	const diff = Math.floor(moment.duration(moment().diff(date)).as('years'));
-	if (!diff || isNaN(diff)) return null;
+	if (isNaN(diff)) return null;
 	return diff >= 18;
 };
