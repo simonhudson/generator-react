@@ -18,7 +18,7 @@ const NumberSelect = props => {
 
 	return (
 		<>
-			<Label id={props.id} text={props.labelText} />
+			<Label {...props} />
 			<select data-test="number-select" id={props.id}>
 				{generateOptions()}
 			</select>

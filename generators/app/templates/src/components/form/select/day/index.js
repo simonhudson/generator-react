@@ -20,7 +20,7 @@ const DaySelect = props => {
 
 	return (
 		<>
-			<Label id={props.id} text={props.labelText} />
+			<Label {...props} />
 			<select data-test="day-select" id={props.id}>
 				{generateOptions()}
 	        </select>
