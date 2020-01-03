@@ -1,6 +1,7 @@
 @import 'assets/css/styles';
 
 label {
+    @include margin-b-xsm();
     @include strong();
     display: block;
 }
