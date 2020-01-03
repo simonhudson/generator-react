@@ -13,7 +13,7 @@ const NumberSelect = props => {
 	const generateOptions = () => {
 		let options = [];
 		for (let i=min; i <= props.max; i++) options.push(<Option key={i} value={i} text={i} />);
-		return options;
+		return props.descending ? options.reverse() : options;
 	};
 
 	return (

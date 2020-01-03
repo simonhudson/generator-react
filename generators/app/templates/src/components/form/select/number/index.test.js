@@ -59,6 +59,15 @@ describe('NumberSelect', () => {
         expect(objectUnderTest.find('option').at(10).text()).toEqual('10');
     });
 
+    it('should render in descending order when specified', () => {
+        const props = cloneDeep(baseProps);
+        props.descending = true;
+        initialise(props);
+        assertElementExists(objectUnderTest, selector);
+        expect(objectUnderTest.find('option').at(0).text()).toEqual('10');
+        expect(objectUnderTest.find('option').at(5).text()).toEqual('5');
+    });
+
     const initialise = props => objectUnderTest = mount(<NumberSelect {...props} />);
 
 });
