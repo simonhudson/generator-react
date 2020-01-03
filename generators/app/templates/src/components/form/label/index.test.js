@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import Label from './index';
 const cloneDeep = require('lodash/cloneDeep');
 import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
@@ -15,6 +15,7 @@ describe('Label', () => {
 
     let objectUnderTest;
 	const selector = `label[data-test="form-label"]`;
+    const labelInfo = `span[data-test="label-info"]`;
     const HIDDEN_CLASS = 'visually-hidden';
 
     it('should return null when no id prop passed', () => {
@@ -48,16 +49,14 @@ describe('Label', () => {
         expect(objectUnderTest.find(selector).hasClass(HIDDEN_CLASS)).toEqual(true);
     });
 
-    //
-    // it('should render with truncated text when specified', () => {
-    //     const props = cloneDeep(baseProps);
-    //     props.truncate = true;
-    //     initialise(props);
-    //     expect(objectUnderTest.find('option').length).toEqual(7);
-    //     expect(objectUnderTest.find('option').at(0).text()).toEqual('Mon');
-    //     expect(objectUnderTest.find('option').at(6).text()).toEqual('Sun');
-    // });
+    it('should render with info when specified', () => {
+        const props = cloneDeep(baseProps);
+        props.labelInfo = 'This is some info text';
+        initialise(props);
+        assertElementExists(objectUnderTest, labelInfo);
+        expect(objectUnderTest.find(labelInfo).text()).toEqual('This is some info text');
+    });
 
-    const initialise = props => objectUnderTest = shallow(<Label {...props} />);
+    const initialise = props => objectUnderTest = mount(<Label {...props} />);
 
 });

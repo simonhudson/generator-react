@@ -1,0 +1,12 @@
+@import 'assets/css/styles';
+
+label {
+    @include strong();
+    display: block;
+}
+
+.label-info {
+    @include text-small();
+    font-weight: $base-font-weight;
+    display: block;
+}
