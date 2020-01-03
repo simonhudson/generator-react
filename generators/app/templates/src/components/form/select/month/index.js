@@ -4,6 +4,7 @@ import React from 'react';
 import Label from '~/components/form/label';
 import Option from '~/components/form/select/option';
 const getMonthName = require('~/utilities/date/getMonthName');
+import '../css/styles.scss';
 
 const MonthSelect = props => {
 

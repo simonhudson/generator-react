@@ -3,6 +3,7 @@
 import React from 'react';
 import Label from '~/components/form/label';
 import Option from '~/components/form/select/option';
+import '../css/styles.scss';
 
 const NumberSelect = props => {
 

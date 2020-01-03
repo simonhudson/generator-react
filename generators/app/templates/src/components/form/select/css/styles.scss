@@ -1,0 +1,7 @@
+@import 'assets/css/styles';
+
+select {
+    @include border();
+    @include border-radius(2px);
+    @include padding-xsm();
+}
