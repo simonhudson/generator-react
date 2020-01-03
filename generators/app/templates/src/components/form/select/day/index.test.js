@@ -2,19 +2,19 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import MonthSelect from './index';
+import DaySelect from './index';
 const cloneDeep = require('lodash/cloneDeep');
 import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
 
 const baseProps = {
     id: 'foo',
-    labelText: 'Month'
+    labelText: 'Day'
 };
 
-describe('MonthSelect', () => {
+describe('DaySelect', () => {
 
     let objectUnderTest;
-	const selector = `select[data-test="month-select"]`;
+	const selector = `select[data-test="day-select"]`;
     const label = `label[data-test="form-label"]`;
 
     it('should return null when no id prop passed', () => {
@@ -36,23 +36,23 @@ describe('MonthSelect', () => {
         initialise(props);
         assertElementExists(objectUnderTest, selector);
         assertElementExists(objectUnderTest, label);
-        expect(objectUnderTest.find(label).text()).toEqual('Month');
-        expect(objectUnderTest.find('option').length).toEqual(12);
-        expect(objectUnderTest.find('option').at(0).text()).toEqual('January');
+        expect(objectUnderTest.find(label).text()).toEqual('Day');
+        expect(objectUnderTest.find('option').length).toEqual(7);
+        expect(objectUnderTest.find('option').at(0).text()).toEqual('Monday');
         expect(objectUnderTest.find('option').at(0).prop('value')).toEqual(1);
-        expect(objectUnderTest.find('option').at(11).text()).toEqual('December');
-        expect(objectUnderTest.find('option').at(11).prop('value')).toEqual(12);
+        expect(objectUnderTest.find('option').at(6).text()).toEqual('Sunday');
+        expect(objectUnderTest.find('option').at(6).prop('value')).toEqual(7);
     });
 
     it('should render with truncated text when specified', () => {
         const props = cloneDeep(baseProps);
         props.truncate = true;
         initialise(props);
-        expect(objectUnderTest.find('option').length).toEqual(12);
-        expect(objectUnderTest.find('option').at(0).text()).toEqual('Jan');
-        expect(objectUnderTest.find('option').at(11).text()).toEqual('Dec');
+        expect(objectUnderTest.find('option').length).toEqual(7);
+        expect(objectUnderTest.find('option').at(0).text()).toEqual('Mon');
+        expect(objectUnderTest.find('option').at(6).text()).toEqual('Sun');
     });
 
-    const initialise = props => objectUnderTest = mount(<MonthSelect {...props} />);
+    const initialise = props => objectUnderTest = mount(<DaySelect {...props} />);
 
 });
