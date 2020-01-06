@@ -5,10 +5,8 @@ import './css/styles.scss';
 
 const FormRow = props => {
 
-	if (!props) return null;
-
 	return (
-		<div className="form-row">
+		<div className="form-row" data-test="form-row">
             {props.children}
         </div>
     );
