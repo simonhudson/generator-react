@@ -4,9 +4,9 @@ import React from 'react';
 import FormRow from '~/components/form/form-row';
 import Radio from '~/components/form/radio';
 
-const Name = props => {
+const RadioGroup = props => {
 
-	if (!props.inputs || !props.inputs.length || !props.legend) return null;
+	if (!props.inputs || !props.inputs.length || !props.legend || !props.inputName) return null;
 
 	return (
 		<FormRow>
@@ -17,7 +17,7 @@ const Name = props => {
 						<Radio
 							key={index}
 							id={input.id}
-							name={input.name}
+							name={props.inputName}
 							value={input.value}
 							labelText={input.labelText}
 						/>
@@ -29,4 +29,4 @@ const Name = props => {
 
 };
 
-export default Name;
+export default RadioGroup;
