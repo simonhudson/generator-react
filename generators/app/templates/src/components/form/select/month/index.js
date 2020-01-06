@@ -3,6 +3,7 @@
 import React from 'react';
 import Label from '~/components/form/label';
 import Option from '~/components/form/select/option';
+import FormRow from '~/components/form/form-row';
 const getMonthName = require('~/utilities/date/getMonthName');
 import '../css/styles.scss';
 
@@ -20,12 +21,12 @@ const MonthSelect = props => {
 	};
 
 	return (
-		<>
+		<FormRow>
 			<Label {...props} />
 			<select data-test="month-select" id={props.id}>
 				{generateOptions()}
 	        </select>
-		</>
+		</FormRow>
 	);
 
 };

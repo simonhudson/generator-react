@@ -8,6 +8,7 @@ label {
 
 .label-info {
     @include text-small();
+    color: rgba(palette(primary, bodyText), .75);
     font-weight: $base-font-weight;
     display: block;
 }

@@ -3,6 +3,7 @@
 import React from 'react';
 import Label from '~/components/form/label';
 import Option from '~/components/form/select/option';
+import FormRow from '~/components/form/form-row';
 import '../css/styles.scss';
 
 const NumberSelect = props => {
@@ -18,12 +19,12 @@ const NumberSelect = props => {
 	};
 
 	return (
-		<>
+		<FormRow>
 			<Label {...props} />
 			<select data-test="number-select" id={props.id}>
 				{generateOptions()}
 			</select>
-		</>
+		</FormRow>
 	);
 
 };
