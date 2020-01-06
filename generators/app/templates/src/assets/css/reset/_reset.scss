@@ -29,3 +29,8 @@ fieldset {
     @include no-padding();
     border: 0;
 }
+
+details summary::marker,
+details summary::-webkit-details-marker {
+    display: none;
+}

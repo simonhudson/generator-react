@@ -1,0 +1,19 @@
+@import 'assets/css/styles';
+
+.accordion {
+
+}
+
+.accordion__summary,
+.accordion__content {
+    @include padding();
+}
+
+.accordion__summary {
+    background: rgba(palette(primary, bodyText), .15);
+    cursor: pointer;
+}
+
+.accordion__content {
+    @include border();
+}
