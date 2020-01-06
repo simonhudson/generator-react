@@ -17,6 +17,8 @@ describe('DaySelect', () => {
 	const selector = `select[data-test="day-select"]`;
     const label = `label[data-test="form-label"]`;
 
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+
     it('should return null when no id prop passed', () => {
         const props = cloneDeep(baseProps);
         delete props.id;

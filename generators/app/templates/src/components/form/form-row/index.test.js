@@ -11,6 +11,8 @@ describe('FormRow', () => {
     let objectUnderTest;
 	const selector = `div[data-test="form-row"]`;
 
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+
     it('should render as expected', () => {
         initialise();
         assertElementExists(objectUnderTest, selector);

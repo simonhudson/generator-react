@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import LabelInfo from './info';
 const cloneDeep = require('lodash/cloneDeep');
 import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
@@ -14,6 +14,8 @@ describe('LabelInfo', () => {
 
     let objectUnderTest;
     const selector = `span[data-test="label-info"]`;
+
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 
     it('should return null when no labelInfo prop passed', () => {
         const props = cloneDeep(baseProps);
@@ -29,6 +31,6 @@ describe('LabelInfo', () => {
         expect(objectUnderTest.find(selector).text()).toEqual('My label info');
     });
 
-    const initialise = props => objectUnderTest = shallow(<LabelInfo {...props} />);
+    const initialise = props => objectUnderTest = mount(<LabelInfo {...props} />);
 
 });

@@ -17,6 +17,8 @@ describe('Alert', () => {
 	const selector = `[data-test="alert"]`;
     const icon = `[data-test="icon"]`;
 
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+
     it('should return null when no type prop passed', () => {
         const props = cloneDeep(baseProps);
         delete props.type;

@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import { expect } from 'chai';
 import Icon from './index';
 const cloneDeep = require('lodash/cloneDeep');
@@ -15,6 +15,8 @@ describe('Icon', () => {
 
     let objectUnderTest;
 	const selector = `[data-test="icon"]`;
+
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 
     it('should return null when no type prop passed', () => {
         const props = cloneDeep(baseProps);
@@ -30,6 +32,6 @@ describe('Icon', () => {
         expect(objectUnderTest.find(selector).hasClass('fa-bars')).to.equal(true);
     });
 
-    const initialise = props => objectUnderTest = shallow(<Icon {...props} />);
+    const initialise = props => objectUnderTest = mount(<Icon {...props} />);
 
 });

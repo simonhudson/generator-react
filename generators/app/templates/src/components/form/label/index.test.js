@@ -18,6 +18,8 @@ describe('Label', () => {
     const labelInfo = `span[data-test="label-info"]`;
     const HIDDEN_CLASS = 'visually-hidden';
 
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+
     it('should return null when no id prop passed', () => {
         const props = cloneDeep(baseProps);
         delete props.id;

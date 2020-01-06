@@ -18,6 +18,8 @@ describe('Accordion', () => {
     const summary = `[data-test="accordion__summary"]`;
     const content = `[data-test="accordion__content"]`;
 
+    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+
     it('should return null when no summaryText prop passed', () => {
         const props = cloneDeep(baseProps);
         delete props.summaryText;
