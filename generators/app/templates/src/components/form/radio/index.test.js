@@ -57,22 +57,6 @@ describe('Radio', () => {
         expect(objectUnderTest.find(selector).prop('name')).toEqual('my-name');
         expect(objectUnderTest.find(selector).prop('value')).toEqual('my-value');
     });
-    //
-    // it('should render as hidden when specified', () => {
-    //     const props = cloneDeep(baseProps);
-    //     props.hideRadio = true;
-    //     initialise(props);
-    //     assertElementExists(objectUnderTest, selector);
-    //     expect(objectUnderTest.find(selector).hasClass(HIDDEN_CLASS)).toEqual(true);
-    // });
-    //
-    // it('should render with info when specified', () => {
-    //     const props = cloneDeep(baseProps);
-    //     props.labelInfo = 'This is some info text';
-    //     initialise(props);
-    //     assertElementExists(objectUnderTest, labelInfo);
-    //     expect(objectUnderTest.find(labelInfo).text()).toEqual('This is some info text');
-    // });
 
     const initialise = props => objectUnderTest = mount(<Radio {...props} />);
 
