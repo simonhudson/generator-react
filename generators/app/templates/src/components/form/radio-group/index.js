@@ -10,7 +10,7 @@ const RadioGroup = props => {
 
 	return (
 		<FormRow>
-			<fieldset>
+			<fieldset data-test="form-radio-group">
 				<legend>{props.legend}</legend>
 				{props.inputs.map((input, index) => {
 					return (
