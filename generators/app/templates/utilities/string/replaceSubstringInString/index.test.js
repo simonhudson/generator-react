@@ -9,7 +9,8 @@ const testValues = [
 	{ string: 'TEST lorem ipsum', expected: 'lorem ipsum', expectedWithReplacement: 'replacement lorem ipsum' },
 	{ string: 'tEsT lorem ipsum', expected: 'lorem ipsum', expectedWithReplacement: 'replacement lorem ipsum' },
 	{ string: 'lorem TeSt ipsum', expected: 'lorem ipsum', expectedWithReplacement: 'lorem replacement ipsum' },
-	{ string: 'lorem ipsum tEsT', expected: 'lorem ipsum', expectedWithReplacement: 'lorem ipsum replacement' }
+	{ string: 'lorem ipsum tEsT', expected: 'lorem ipsum', expectedWithReplacement: 'lorem ipsum replacement' },
+	{ string: 'lorem test ipsum tEsT', expected: 'lorem ipsum', expectedWithReplacement: 'lorem replacement ipsum replacement' }
 ];
 
 describe('replaceSubstringInString', () => {
