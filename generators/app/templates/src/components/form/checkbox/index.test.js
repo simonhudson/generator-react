@@ -17,7 +17,7 @@ describe('Checkbox', () => {
 
     let objectUnderTest;
 	const selector = `input[data-test="form-checkbox"]`;
-    const label = `[data-test="form-label"]`;
+    const label = `label[data-test="form-label"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 

@@ -8,7 +8,7 @@ import { assertElementExists } from '&/tests/utilities';
 describe('Footer', () => {
 
     let objectUnderTest;
-	const selector = `[data-test="footer"]`;
+	const selector = `footer[data-test="footer"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 

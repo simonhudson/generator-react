@@ -14,7 +14,7 @@ const baseProps = {
 describe('Icon', () => {
 
     let objectUnderTest;
-	const selector = `[data-test="icon"]`;
+	const selector = `span[data-test="icon"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 

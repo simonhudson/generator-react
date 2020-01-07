@@ -17,7 +17,7 @@ describe('Radio', () => {
 
     let objectUnderTest;
 	const selector = `input[data-test="form-radio"]`;
-    const label = `[data-test="form-label"]`;
+    const label = `label[data-test="form-label"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 

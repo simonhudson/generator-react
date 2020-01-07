@@ -14,9 +14,9 @@ const baseProps = {
 describe('Accordion', () => {
 
     let objectUnderTest;
-	const selector = `[data-test="accordion"]`;
-    const summary = `[data-test="accordion__summary"]`;
-    const content = `[data-test="accordion__content"]`;
+	const selector = `details[data-test="accordion"]`;
+    const summary = `summary[data-test="accordion__summary"]`;
+    const content = `div[data-test="accordion__content"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 
