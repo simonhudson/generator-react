@@ -10,7 +10,7 @@ const Checkbox = props => {
 	return (
         <>
 			<Label id={props.id} labelText={props.labelText} />
-			<input type="checkbox" name={props.name} id={props.id} value={props.value} />
+			<input data-test="form-checkbox" type="checkbox" name={props.name} id={props.id} value={props.value} />
         </>
     );
 

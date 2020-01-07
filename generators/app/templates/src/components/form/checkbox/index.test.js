@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import Radio from './index';
+import Checkbox from './index';
 const cloneDeep = require('lodash/cloneDeep');
 import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
 
@@ -13,10 +13,10 @@ const baseProps = {
     labelText: 'My label'
 };
 
-describe('Radio', () => {
+describe('Checkbox', () => {
 
     let objectUnderTest;
-	const selector = `input[data-test="form-radio"]`;
+	const selector = `input[data-test="form-checkbox"]`;
     const label = `[data-test="form-label"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
@@ -53,7 +53,7 @@ describe('Radio', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
         assertElementExists(objectUnderTest, selector);
-        expect(objectUnderTest.find(selector).prop('type')).toEqual('radio');
+        expect(objectUnderTest.find(selector).prop('type')).toEqual('checkbox');
         expect(objectUnderTest.find(selector).prop('id')).toEqual('my-id');
         expect(objectUnderTest.find(selector).prop('name')).toEqual('my-name');
         expect(objectUnderTest.find(selector).prop('value')).toEqual('my-value');
@@ -61,6 +61,6 @@ describe('Radio', () => {
         expect(objectUnderTest.find(label).text()).toEqual('My label');
     });
 
-    const initialise = props => objectUnderTest = mount(<Radio {...props} />);
+    const initialise = props => objectUnderTest = mount(<Checkbox {...props} />);
 
 });
