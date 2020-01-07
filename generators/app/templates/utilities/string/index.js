@@ -4,6 +4,7 @@ module.exports = {
 	beginsWithVowel: require('./beginsWithVowel'),
 	defineArticle: require('./defineArticle'),
 	escapeHtml: require('./escapeHtml'),
+	replaceSubstringInString: require('./replaceSubstringInString'),
 	replaceWhiteSpaceWithDelimiter: require('./replaceWhiteSpaceWithDelimiter'),
 	stripHtmlTags: require('./stripHtmlTags'),
 	stripWhiteSpace: require('./stripWhiteSpace'),
