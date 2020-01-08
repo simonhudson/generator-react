@@ -27,7 +27,6 @@ class App extends Component {
     render = () => {
 
         const { state } = this;
-        if (!state) return null;
 
         return (
             <>
