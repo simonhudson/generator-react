@@ -2,7 +2,6 @@
 
 const COMMON_OPTIONS = {
 	dataType: 'json',
-	headers: { 'X-Auth-Token': process.env.API_KEY },
 	mode: 'cors'
 };
 
