@@ -3,12 +3,12 @@
 $alertTypes: 'info', 'warning', 'error', 'success';
 
 .alert {
+	@include border-radius();
 	@include padding();
 
 	@each $type in $alertTypes {
 		&--#{$type} {
-			background-color: rgba(palette(alert, #{$type}), .15);
-			border: 1px solid palette(alert, #{$type});
+			background-color: rgba(palette(alert, #{$type}), .10);
 			color: palette(alert, #{$type});
 		}
 
