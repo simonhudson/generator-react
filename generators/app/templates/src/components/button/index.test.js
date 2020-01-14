@@ -33,17 +33,45 @@ describe('Button', () => {
         assertElementDoesNotExist(objectUnderTest, selector);
     });
 
+    it('should return null when onClick prop is not a function', () => {
+        const props = cloneDeep(baseProps);
+        props.onClick = true;
+        initialise(props);
+        assertElementDoesNotExist(objectUnderTest, selector);
+    });
+
     it('should render as expected', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
         assertElementExists(objectUnderTest, selector);
     });
 
+    it('should render with expected label', () => {
+        const props = cloneDeep(baseProps);
+        initialise(props);
+        expect(objectUnderTest.find(selector).text()).to.equal('Click me');
+    });
+
     it('should render with default type when no prop passed', () => {
         const props = cloneDeep(baseProps);
         initialise(props);
-        assertElementExists(objectUnderTest, selector);
         expect(objectUnderTest.find(selector).prop('type')).to.equal('button');
+    });
+
+    it('should render with default type when invalid prop passed', () => {
+        const props = cloneDeep(baseProps);
+        props.type = 'foo';
+        initialise(props);
+        expect(objectUnderTest.find(selector).prop('type')).to.equal('button');
+    });
+
+    it('should render with specified type when valid type prop passed', () => {
+        ['submit', 'button'].forEach(type => {
+            const props = cloneDeep(baseProps);
+            props.type = type;
+            initialise(props);
+            expect(objectUnderTest.find(selector).prop('type')).to.equal(type);
+        });
     });
 
     const initialise = props => objectUnderTest = mount(<Button {...props} />);
