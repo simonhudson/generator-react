@@ -1,0 +1,37 @@
+@import 'assets/css/styles';
+
+.btn {
+    @include border-radius(2px);
+    @include padding-sm();
+    @include strong();
+    @include text-center();
+    border: 1px solid transparent;
+    background: palette(primary, black);
+    color: palette(primary, white);
+	display: inline-block;
+	text-decoration: none;
+}
+
+.btn--primary {
+    background: palette(primary, b);
+	color: palette(primary, white);
+
+    &.btn--is-hollow {
+        background: palette(primary, white);
+        border-color: palette(primary, b);
+        color: palette(primary, b);
+    }
+
+}
+
+.btn--secondary {
+    background: palette(primary, a);
+	color: palette(primary, white);
+
+    &.btn--is-hollow {
+        background: palette(primary, white);
+        border-color: palette(primary, a);
+        color: palette(primary, a);
+    }
+
+}

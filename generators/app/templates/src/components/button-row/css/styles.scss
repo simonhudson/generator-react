@@ -1,0 +1,16 @@
+@import 'assets/css/styles';
+
+.button-row {
+    display: flex;
+	justify-content: space-between;
+
+	[class^=btn--] {
+		flex: 1 1 0;
+
+		&:not(:last-of-type) {
+			@include margin-r();
+		}
+
+	}
+    
+}
