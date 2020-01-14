@@ -11,6 +11,9 @@ import MonthSelect from '~/components/form/select/month';
 import DaySelect from '~/components/form/select/day';
 import RadioGroup from '~/components/form/radio-group';
 import Accordion from '~/components/accordion';
+import ButtonRow from '~/components/button-row';
+import Button from '~/components/button';
+import FlashMessage from '~/components/flash-message';
 import { get } from '~/api';
 
 class App extends Component {
@@ -30,6 +33,13 @@ class App extends Component {
 
         return (
             <>
+                <FlashMessage type="success" title="Success message" message="MRKTM-123 successfully updated." />
+                <ButtonRow>
+                    <Button label="Click me" onClick={(() => console.log(1) )} />
+                    <Button label="Click me" isHollow={true} onClick={(() => console.log(1) )} />
+                    <Button variant="secondary" label="Click me" onClick={(() => console.log(1) )} />
+                    <Button variant="secondary" label="Click me" isHollow={true} onClick={(() => console.log(1) )} />
+                </ButtonRow>
                 <Accordion summaryText="Find out more info">
                     <p>This is some more info</p>
                 </Accordion>

@@ -1,0 +1,41 @@
+@import 'assets/css/styles';
+
+$flash-message-height: 300px;
+
+@keyframes animate-visible {
+    0% { top: -$flash-message-height; }
+    100% { top: $spacing; }
+}
+
+@keyframes animate-hidden {
+    0% { top: $spacing; }
+    100% { top: -$flash-message-height; }
+}
+
+.flash-message {
+    @include box-shadow();
+    @include position-tr($spacing);
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    background: transparent;
+    max-width: $flash-message-height;
+    width: $flash-message-height;
+
+    p:last-of-type {
+        @include no-margin();
+    }
+
+    &.animate-visible {
+        animation-name: animate-visible;
+    }
+
+    &.animate-hidden {
+        animation-name: animate-hidden;
+    }
+
+}
+
+.flash-message__title {
+    @include no-margin();
+    @include strong();
+}
