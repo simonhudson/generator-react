@@ -28,7 +28,7 @@ class MainNavigation extends Component {
 
     render = () => {
 
-        const { props, state } = this;
+        const { state } = this;
 
         return (
             <>
@@ -40,7 +40,7 @@ class MainNavigation extends Component {
                                 <li key={index} className="main-navigation__item">
                                     <a className="main-navigation__link" href={item.href}>{item.label}</a>
                                 </li>
-                            )
+                            );
                         })}
                     </ul>
                 </nav>

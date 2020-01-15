@@ -12,25 +12,8 @@
         display: none;
     }
 
-    span {
-        @include animation-defaults();
-        background: palette(primary, bodyText);
-        display: block;
-        height: 5px;
-        width: 100%;
-
-        &:not(:last-of-type) {
-            @include margin-b-xsm();
-        }
-
-    }
-
-    &.main-navigation-is-visible {
-
-        span {
-
-        }
-
+    .fa {
+        font-size: rem($base-font-size * 2);
     }
 
 }

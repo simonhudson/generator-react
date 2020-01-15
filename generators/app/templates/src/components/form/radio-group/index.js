@@ -21,7 +21,7 @@ const RadioGroup = props => {
 							value={input.value}
 							labelText={input.labelText}
 						/>
-					)
+					);
 				})}
 			</fieldset>
 		</FormRow>

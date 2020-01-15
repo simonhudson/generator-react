@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import './css/styles.scss';
 import Alert from '~/components/alert';
-import AlertTypes from '~/components/alert/alertTypes';
 
 class FlashMessage extends Component {
 
@@ -21,7 +20,7 @@ class FlashMessage extends Component {
 
     render = () => {
 
-        const { props, state } = this;
+        const { props } = this;
 
         return (
             <div className="flash-message">

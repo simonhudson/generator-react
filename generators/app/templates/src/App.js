@@ -24,21 +24,21 @@ class App extends Component {
     }
 
     componentDidMount = () => {
-        get('people').then(response => console.log(response));
+        get('people').then(response => this.setState({ data: response }));
     }
 
     render = () => {
 
-        const { state } = this;
-
         return (
             <>
+                <Header />
+                <MainNavigation />
                 <FlashMessage type="success" title="Success message" message="MRKTM-123 successfully updated." />
                 <ButtonRow>
-                    <Button label="Click me" onClick={(() => console.log(1) )} />
-                    <Button label="Click me" isHollow={true} onClick={(() => console.log(1) )} />
-                    <Button variant="secondary" label="Click me" onClick={(() => console.log(1) )} />
-                    <Button variant="secondary" label="Click me" isHollow={true} onClick={(() => console.log(1) )} />
+                    <Button label="Click me" onClick={(() => { return false; } )} />
+                    <Button label="Click me" isHollow={true} onClick={(() => { return false; } )} />
+                    <Button variant="secondary" label="Click me" onClick={(() => { return false; } )} />
+                    <Button variant="secondary" label="Click me" isHollow={true} onClick={(() => { return false; } )} />
                 </ButtonRow>
                 <Accordion summaryText="Find out more info">
                     <p>This is some more info</p>
@@ -68,9 +68,6 @@ class App extends Component {
                 <Alert type="success" hasIcon={true}>
                     <p>This is some information</p>
                 </Alert>
-                <Header />
-                <MainNavigation />
-                <p>Hello world</p>
                 <Footer />
             </>
         );

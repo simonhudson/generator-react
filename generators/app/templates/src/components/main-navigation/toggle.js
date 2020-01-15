@@ -10,9 +10,7 @@ const MainNavigationToggle = props => {
 
 	return (
 		<button aria-hidden="true" className={`main-navigation__toggle ${props.navigationIsVisible ? 'main-navigation-is-visible' : ''}`} onClick={((e) => props.onClick(e))}>
-			<span></span>
-			<span></span>
-			<span></span>
+			<Icon type="bars" />
 		</button>
 	);
 
