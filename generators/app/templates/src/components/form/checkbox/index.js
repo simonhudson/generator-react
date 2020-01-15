@@ -5,14 +5,12 @@ import Label from '~/components/form/label';
 
 const Checkbox = props => {
 
-	if (!props.id || !props.labelText) return null;
-
-	const name = props.name || props.id;
+	if (!props.id || !props.name || !props.labelText) return null;
 
 	return (
         <>
 			<Label id={props.id} labelText={props.labelText} />
-			<input data-test="form-checkbox" type="checkbox" name={name} id={props.id} value={props.value} />
+			<input data-test="form-checkbox" type="checkbox" name={props.name} id={props.id} value={props.value} />
         </>
     );
 
