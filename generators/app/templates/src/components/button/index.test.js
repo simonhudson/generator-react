@@ -74,6 +74,28 @@ describe('Button', () => {
         });
     });
 
+    it('should render with default variant when no prop passed', () => {
+        const props = cloneDeep(baseProps);
+        initialise(props);
+        expect(objectUnderTest.find(selector).hasClass('btn--primary')).to.equal(true);
+    });
+
+    it('should render with default variant when invalid prop passed', () => {
+        const props = cloneDeep(baseProps);
+        props.variant = 'foo';
+        initialise(props);
+        expect(objectUnderTest.find(selector).hasClass('btn--primary')).to.equal(true);
+    });
+
+    it('should render with specified variant when valid variant prop passed', () => {
+        ['primary', 'secondary', 'tertiary'].forEach(variant => {
+            const props = cloneDeep(baseProps);
+            props.variant = variant;
+            initialise(props);
+            expect(objectUnderTest.find(selector).hasClass(`btn--${variant}`)).to.equal(true);
+        });
+    });
+
     const initialise = props => objectUnderTest = mount(<Button {...props} />);
 
 });
