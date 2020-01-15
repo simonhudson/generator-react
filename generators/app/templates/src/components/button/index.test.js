@@ -96,6 +96,13 @@ describe('Button', () => {
         });
     });
 
+    it('should render as hollow when specified', () => {
+        const props = cloneDeep(baseProps);
+        props.isHollow = true;
+        initialise(props);
+        expect(objectUnderTest.find(selector).hasClass(`btn--is-hollow`)).to.equal(true);
+    });
+
     const initialise = props => objectUnderTest = mount(<Button {...props} />);
 
 });

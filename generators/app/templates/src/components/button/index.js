@@ -14,13 +14,13 @@ const Button = props => {
 	const variant = (props.variant && VALID_VARIANTS.includes(props.variant)) ? props.variant : 'primary';
 
 	const setClassName = () => {
-		let className = ['btn', `btn--${props.variant}`];
+		let className = ['btn', `btn--${variant}`];
 		if (props.isHollow) className.push('btn--is-hollow');
 		return className.join(' ');
 	};
 
 	return (
-		<button className={setClassName()} data-test="button" type={props.type} onClick={props.onClick}>{props.label}</button>
+		<button className={setClassName()} data-test="button" type={type} onClick={props.onClick}>{props.label}</button>
 	);
 
 };
