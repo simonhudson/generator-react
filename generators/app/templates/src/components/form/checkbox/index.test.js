@@ -28,20 +28,6 @@ describe('Checkbox', () => {
         assertElementDoesNotExist(objectUnderTest, selector);
     });
 
-    it('should return null when no name prop passed', () => {
-        const props = cloneDeep(baseProps);
-        delete props.name;
-        initialise(props);
-        assertElementDoesNotExist(objectUnderTest, selector);
-    });
-
-    it('should return null when no value prop passed', () => {
-        const props = cloneDeep(baseProps);
-        delete props.value;
-        initialise(props);
-        assertElementDoesNotExist(objectUnderTest, selector);
-    });
-
     it('should return null when no labelText prop passed', () => {
         const props = cloneDeep(baseProps);
         delete props.labelText;
@@ -59,6 +45,13 @@ describe('Checkbox', () => {
         expect(objectUnderTest.find(selector).prop('value')).toEqual('my-value');
         expect(objectUnderTest.find(label).prop('htmlFor')).toEqual('my-id');
         expect(objectUnderTest.find(label).text()).toEqual('My label');
+    });
+
+    it('should use id when no name prop passed', () => {
+        const props = cloneDeep(baseProps);
+        delete props.name;
+        initialise(props);
+        expect(objectUnderTest.find(selector).prop('name')).toEqual('my-id');
     });
 
     const initialise = props => objectUnderTest = mount(<Checkbox {...props} />);
