@@ -3,7 +3,7 @@
 import React from 'react';
 import './css/styles.scss';
 import Icon from '~/components/icon';
-import alertTypes from './alertTypes';
+import AlertTypes from './alertTypes';
 
 const ICONS = {
 	'info': 'info-circle',
@@ -14,7 +14,7 @@ const ICONS = {
 
 const Alert = props => {
 
-	if (!props || !alertTypes.includes(props.type)) return null;
+	if (!props || !AlertTypes.includes(props.type)) return null;
 
 	return (
         <div className={`alert alert--${props.type} ${props.hasIcon ? 'alert--has-icon' : ''}`} data-test="alert">

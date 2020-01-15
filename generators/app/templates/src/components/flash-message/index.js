@@ -3,8 +3,7 @@
 import React, { Component } from 'react';
 import './css/styles.scss';
 import Alert from '~/components/alert';
-
-const VALID_TYPES = ['info', 'warning', 'error', 'success'];
+import AlertTypes from '~/components/alert/alertTypes';
 
 class FlashMessage extends Component {
 
