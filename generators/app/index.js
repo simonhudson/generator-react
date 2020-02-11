@@ -119,7 +119,8 @@ module.exports = class extends Generator {
     		this._logActionStart(action);
     		const files = [
 				'.babelrc',
-				'.env.example',
+                '.env.example',
+                '.env',
 				'.eslintrc',
 				'.gitignore',
 				'.prettierrc',

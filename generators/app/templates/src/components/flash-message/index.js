@@ -10,7 +10,7 @@ class FlashMessage extends Component {
 		super(props);
         this.state = {
             isMovingIntoView: false,
-            isMovingutOfView: false
+            isMovingOutOfView: false
         };
 	}
 
