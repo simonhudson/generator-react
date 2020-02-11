@@ -8,8 +8,8 @@ $alertTypes: 'info', 'warning', 'error', 'success';
 
 	@each $type in $alertTypes {
 		&--#{$type} {
-			background-color: palette(alert, #{$type}Tint);
-			color: palette(alert, #{$type}Base);
+			background-color: rgba(palette(alert, #{$type}), 0.20);
+			color: palette(alert, #{$type});
 		}
 
 		&.alert--has-icon {
