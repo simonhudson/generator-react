@@ -15,8 +15,7 @@ const FeatureRow = props => {
                     return (
                         <FeatureRowItem key={index} {...item} />
                     );
-                })}
-                
+                })}  
             </div>
         </div>
 	);
