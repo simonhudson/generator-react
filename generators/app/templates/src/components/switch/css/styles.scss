@@ -1,0 +1,31 @@
+@import 'assets/css/styles';
+
+.switch__input {
+    @include visually-hidden();
+
+    &:checked + .switch__label::after {
+        background: green;
+    }
+
+}
+
+.switch__label {
+    align-items: center;
+    display: flex;
+
+    &::before,
+    &::after {
+        content: '';
+        display: inline-block;
+    }
+
+    &::after {
+        @include border();
+        @include border-radius(100px);
+        @include transition();
+        background: none;
+        height: 20px;
+        width: 45px;
+    }
+
+}

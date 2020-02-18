@@ -1,11 +1,11 @@
 @mixin wrap() {
-	@include padding-x();
 	@include width-full();
 	margin: 0 auto;
 
-	@include media(tablet-p) {
-		@include no-margin();
+	@include media(tablet-l) {
+		@include width-full--desktop();
 	}
+	
 }
 
 @mixin wrap-narrow() {

@@ -9,7 +9,9 @@ const Header = props => {
 
 	return (
 		<header data-test="header">
-
+			<div className="header__wrap">
+				
+			</div>
 		</header>
 	);
 

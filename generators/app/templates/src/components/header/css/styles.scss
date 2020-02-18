@@ -1,1 +1,5 @@
 @import 'assets/css/styles';
+
+.header__wrap {
+    @include wrap();
+}

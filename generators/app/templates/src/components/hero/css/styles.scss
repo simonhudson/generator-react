@@ -1,0 +1,15 @@
+@import 'assets/css/styles';
+
+.hero {
+    @include padding-y-xlg();
+    background: #eee;
+    height: 250px;
+}
+
+.hero--large {
+    height: 400px;
+}
+
+.hero__wrap {
+    @include wrap();
+}
