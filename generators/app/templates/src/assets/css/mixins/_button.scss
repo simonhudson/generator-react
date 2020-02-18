@@ -1,36 +1,37 @@
-@mixin button() {
-	@include padding();
-	@include strong();
-	@include text-center();
-	border: 1px solid transparent;
+@mixin btn() {
+    @include border-radius(2px);
+    @include padding();
+    @include strong();
+    @include text-center();
+    border: 2px solid transparent;
+    background: palette(primary, black);
+    color: palette(primary, white);
 	display: inline-block;
 	text-decoration: none;
 }
 
-@mixin button--primary() {
-	@include button();
-	background: palette(primary, b);
+@mixin btn--primary() {
+	@include btn();
+    background: palette(primary, b);
 	color: palette(primary, white);
+
+    &.btn--is-hollow {
+        background: palette(primary, white);
+        border-color: palette(primary, b);
+        color: palette(primary, b);
+    }
+
 }
 
-@mixin button--primary--hollow() {
-	@include button();
-	background: transparent;
-	border-color: palette(primary, b);
-	color: palette(primary, b);
-}
+@mixin btn--secondary() {
+	@include btn();
+    background: palette(primary, a);
+	color: palette(primary, white);
 
-@mixin button-row() {
-	display: flex;
-	justify-content: space-between;
-	
-	[class^=btn--] {
-		flex: 1 1 0;
-		
-		&:not(:last-of-type) {
-			@include margin-r();
-		}
+    &.btn--is-hollow {
+        background: palette(primary, white);
+        border-color: palette(primary, a);
+        color: palette(primary, a);
+    }
 
-	}
-	
 }

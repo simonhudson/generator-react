@@ -1,24 +1,41 @@
 'use strict';
 
-import React from 'react';
+import React, { Component } from 'react';
 import './css/styles.scss';
 import FeatureRowItem from './item';
+import Loading from '~/components/loading';
+import { get } from '~/api';
 
-const FeatureRow = props => {
+class FeatureRow extends Component {
 
-    if (!props.items || !props.items.length) return null;
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: null,
+            isLoading: null
+        };
+    }
 
-	return (
-        <div className="feature-row" data-test="feature-row">
-            <div className="wrap feature-row__wrap">
-                {props.items.map((item, index) => {
-                    return (
-                        <FeatureRowItem key={index} {...item} />
-                    );
-                })}  
+    componentDidMount = () => {
+        this.setState({ isLoading: true });
+        get('people').then(response => this.setState({ data: response.results.slice(0, 3), isLoading: false }));
+    }
+
+	render = () => {
+
+        return (
+            <div className="feature-row" data-test="feature-row">
+                <div className="wrap feature-row__wrap">
+                    {this.state.isLoading && (<Loading />)}
+                    {!this.state.isLoading && this.state.data && (this.state.data.map((item, index) => {
+                        return (
+                            <FeatureRowItem key={index} title={item.name} ctaUrl={item.url} />
+                        );
+                    }))}  
+                </div>
             </div>
-        </div>
-	);
+        );
+    }
 
 };
 

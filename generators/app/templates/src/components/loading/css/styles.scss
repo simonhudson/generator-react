@@ -1,0 +1,10 @@
+@import 'assets/css/styles';
+
+.loading {
+    @include text-center();
+    @include width-full();
+}
+
+.loading__text {
+    @include no-margin();
+}

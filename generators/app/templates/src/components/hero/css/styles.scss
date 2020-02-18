@@ -3,13 +3,28 @@
 .hero {
     @include padding-y-xlg();
     background: #eee;
-    height: 250px;
+    height: 150px;
+
+    @include media(tablet-p) {
+        height: 250px;
+    }
+
 }
 
 .hero--large {
-    height: 400px;
+    
+    @include media(tablet-p) {
+        height: 400px;
+    }
+    
 }
 
 .hero__wrap {
     @include wrap();
+}
+
+.hero__title {
+    @include h1();
+    @include text-shadow();
+    color: palette(primary, white);
 }

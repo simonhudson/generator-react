@@ -7,17 +7,11 @@ import Footer from '~/components/footer';
 import MainNavigation from '~/components/main-navigation';
 import Hero from '~/components/hero';
 import FeatureRow from '~/components/feature-row';
-import { get } from '~/api';
 
 class App extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
-    }
-
-    componentDidMount = () => {
-        // get('people').then(response => this.setState({ data: response }));
     }
 
     render = () => {
@@ -27,16 +21,11 @@ class App extends Component {
                 <Header />
                 <MainNavigation />
                 <Hero page="home" />
-                <FeatureRow
-                    items={[
-                        { title: 'Lorem ipsum', ctaUrl: '#' },
-                        { title: 'Craig Bryson', ctaUrl: '#' },
-                        { title: 'The Texas Chain Saw Massacre', ctaUrl: '#' }
-                    ]}
-                />
+                <FeatureRow />
                 <Footer />
             </>
         );
+
     }
 }
 

@@ -1,6 +1,6 @@
 @mixin wrap() {
-	@include width-full();
 	margin: 0 auto;
+	width: 94%;
 
 	@include media(tablet-l) {
 		@include width-full--desktop();

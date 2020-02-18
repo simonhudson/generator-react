@@ -12,8 +12,10 @@
     }
 
     &:not(:last-of-type) {
+        @include margin-b();
 
         @include media(tablet-p) {
+            @include no-margin();
             @include margin-r-lg();            
         }
 
