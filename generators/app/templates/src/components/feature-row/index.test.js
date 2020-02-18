@@ -7,45 +7,43 @@ import FeatureRow from './index';
 const cloneDeep = require('lodash/cloneDeep');
 import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
 
-const baseProps = {
-    items: [
-        { title: 'Lorem ipsum', ctaUrl: '#' },
-        { title: 'Craig Bryson', ctaUrl: '#' },
-        { title: 'The Texas Chain Saw Massacre', ctaUrl: '#' }
-    ]
-};
-
 describe('FeatureRow', () => {
 
     let objectUnderTest;
     const selector = `div[data-test="feature-row"]`;
     const item = `div[data-test="feature-row-item"]`;
+    const loading = `div[data-test="loading"]`;
 
     afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
 
-    it('should return null when no items prop passed', () => {
-        const props = cloneDeep(baseProps);
-        delete props.items;
+    it('should render loading when loading data', () => {
+        const props = cloneDeep();
         initialise(props);
-        assertElementDoesNotExist(objectUnderTest, selector);
+        objectUnderTest.setState({ isLoading: true });
+		objectUnderTest.update();
+        assertElementExists(objectUnderTest, loading);
     });
 
-    it('should return null when empty items prop passed', () => {
-        const props = cloneDeep(baseProps);
-        props.items = [];
+    it('should render as expected when data has loaded', () => {
+        const props = cloneDeep();
         initialise(props);
-        assertElementDoesNotExist(objectUnderTest, selector);
-    });
-
-    it('should render as expected', () => {
-        const props = cloneDeep(baseProps);
-        initialise(props);
+        objectUnderTest.setState({ isLoading: false });
+		objectUnderTest.update();
         assertElementExists(objectUnderTest, selector);
     });
 
     it('should render the correct number of items', () => {
-        const props = cloneDeep(baseProps);
+        const props = cloneDeep();
         initialise(props);
+        objectUnderTest.setState({
+            isLoading: false,
+        data: [
+            { name: 'Lorem ipsum', url: '#' },
+            { name: 'Craig Bryson', url: '#' },
+            { name: 'The Texas Chain Saw Massacre', url: '#' }
+        ]
+        });
+		objectUnderTest.update();
         assertElementExists(objectUnderTest, selector);
         expect(objectUnderTest.find(item).length).to.equal(3);
     });
