@@ -1,0 +1,26 @@
+@import 'assets/css/styles';
+
+.feature-row-item {
+    @include border-radius();
+    @include box-shadow();
+    @include padding();
+
+    @include media(tablet-l) {
+        @include padding-lg();
+        flex-basis: 0;
+        flex-grow: 1;
+    }
+
+    &:not(:last-of-type) {
+
+        @include media(tablet-p) {
+            @include margin-r-lg();            
+        }
+
+    }
+}
+
+.feature-row-item__title {
+    @include h2();
+    @include weight-light();
+}

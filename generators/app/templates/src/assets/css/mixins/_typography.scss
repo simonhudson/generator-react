@@ -6,6 +6,10 @@
 	font-family: $base-font-sans-serif;
 }
 
+@mixin weight-light() {
+	font-weight: 300;
+}
+
 @mixin strong() {
 	font-weight: 600;
 }

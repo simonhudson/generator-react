@@ -27,10 +27,6 @@
     animation-name: slide-in-from-left;
 }
 
-.main-navigation__wrap {
-    @include wrap();
-}
-
 .main-navigation__list {
     list-style: none;
 

@@ -34,7 +34,7 @@ class MainNavigation extends Component {
             <>
                 <MainNavigationToggle onClick={this.toggleMainNavigation} navigationIsVisible={state.isVisible}/>
                 <nav className={`main-navigation ${state.toggleClicked ? state.isVisible ? 'main-navigation--is-visible' : 'main-navigation--is-hidden' : ''}`} data-test="main-navigation">
-                    <div className="main-navigation__wrap">
+                    <div className="wrap">
                         <ul className="main-navigation__list">
                             {items.map((item, index) => {
                                 return (
