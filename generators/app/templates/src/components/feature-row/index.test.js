@@ -37,11 +37,11 @@ describe('FeatureRow', () => {
         initialise(props);
         objectUnderTest.setState({
             isLoading: false,
-        data: [
-            { name: 'Lorem ipsum', url: '#' },
-            { name: 'Craig Bryson', url: '#' },
-            { name: 'The Texas Chain Saw Massacre', url: '#' }
-        ]
+            data: [
+                { name: 'Lorem ipsum', url: '#' },
+                { name: 'Craig Bryson', url: '#' },
+                { name: 'The Texas Chain Saw Massacre', url: '#' }
+            ]
         });
 		objectUnderTest.update();
         assertElementExists(objectUnderTest, selector);
