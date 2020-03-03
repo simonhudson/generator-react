@@ -5,7 +5,7 @@
     @include padding-sm();
     @include strong();
     @include text-center();
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     background: palette(primary, black);
     color: palette(primary, white);
 	display: inline-block;

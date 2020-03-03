@@ -1,0 +1,37 @@
+@import 'assets/css/styles';
+
+.card {
+    @include border-radius(2px);
+    @include box-shadow();
+}
+
+.card__inner {
+
+    @include media(tablet-p) {
+        display: flex;
+    }
+
+}
+
+.card__media {
+    @include width-full();
+    background: #ddd;
+    height: auto;
+
+    @include media(tablet-p) {
+        @include width-half();    
+    }
+
+}
+
+.card__content {
+    @include padding();
+}
+
+.card__title {
+    @include h5();
+}
+
+.card__content-text {
+    @include text-small();
+}

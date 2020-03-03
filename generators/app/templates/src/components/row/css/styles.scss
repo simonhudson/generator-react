@@ -1,0 +1,36 @@
+@import 'assets/css/styles';
+
+.row {
+    @include padding-y();
+
+    @include media(tablet-p) {
+        @include padding-y-lg();
+    }
+    
+}
+
+.row__wrap {
+    @include wrap();
+    
+    @include media(tablet-p) {
+        display: flex;
+    }
+
+    & > * {
+        
+        @include media(tablet-l) {
+            flex-basis: 0;
+            flex-grow: 1;
+        }
+    
+        &:not(:last-of-type) {
+    
+            @include media(tablet-p) {
+                @include no-margin();
+                @include margin-r-lg();            
+            }
+    
+        }
+    }
+
+}
