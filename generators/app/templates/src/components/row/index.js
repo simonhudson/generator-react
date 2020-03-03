@@ -5,11 +5,9 @@ import './css/styles.scss';
 
 const Row = props => {
 
-    if (!props || !props.children) return null;
-
 	return (
         <div className="row" data-test="row">
-            <div className="row__wrap">
+            <div className="row__wrap" data-test="row__wrap">
                 {props.children}
             </div>
         </div>
