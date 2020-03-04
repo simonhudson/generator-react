@@ -6,7 +6,6 @@ import Header from '~/components/header';
 import Footer from '~/components/footer';
 import MainNavigation from '~/components/main-navigation';
 import Hero from '~/components/hero';
-import FeatureRow from '~/components/feature-row';
 
 class App extends Component {
 
@@ -21,7 +20,6 @@ class App extends Component {
                 <Header />
                 <MainNavigation />
                 <Hero page="home" />
-                <FeatureRow />
                 <Footer />
             </>
         );
