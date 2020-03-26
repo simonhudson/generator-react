@@ -2,15 +2,14 @@
 
 import React from 'react';
 import './css/styles.scss';
+import LoadingImage from './loading.svg';
 
 const Loading = props => {
-
-	return (
+    return (
         <div className="loading" data-test="loading">
-            <p className="loading__text">Loading...</p>
+            <img alt="Loading" data-test="loading__img" src={LoadingImage} />
         </div>
     );
-
 };
 
 export default Loading;

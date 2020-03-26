@@ -2,24 +2,23 @@
 
 import React from 'react';
 import { mount } from 'enzyme';
-import { expect } from 'chai';
 import Loading from './index';
 const cloneDeep = require('lodash/cloneDeep');
-import { assertElementExists, assertElementDoesNotExist } from '&/tests/utilities';
+import { assertElementExists } from '&/tests/utilities';
 
 describe('Loading', () => {
-
     let objectUnderTest;
     const selector = `div[data-test="loading"]`;
+    const img = `img[data-test="loading__img"]`;
 
-    afterEach(() => !!objectUnderTest ? objectUnderTest.unmount() : null);
+    afterEach(() => (!!objectUnderTest ? objectUnderTest.unmount() : null));
 
     it('should render as expected', () => {
         const props = cloneDeep();
         initialise(props);
         assertElementExists(objectUnderTest, selector);
+        assertElementExists(objectUnderTest, img);
     });
 
-    const initialise = props => objectUnderTest = mount(<Loading />);
-
+    const initialise = props => (objectUnderTest = mount(<Loading />));
 });
