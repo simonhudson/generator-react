@@ -3,10 +3,10 @@
 .main-navigation {
     @include animation-defaults();
     @include box-shadow();
-    @include position-tl(0, -65%);
+    @include position-tl(0, -100vw);
     background: #eee;
     height: 100vh;
-    width: 65%;
+    width: 75%;
 
     @include media(tablet-l) {
         @include width-full();
