@@ -3,6 +3,7 @@
 const Generator = require('yeoman-generator');
 const del = require('del');
 const mkdir = require('mkdirp');
+const fs = require('fs');
 
 const dirs = self => {
 	return {
@@ -11,14 +12,18 @@ const dirs = self => {
 			root: `${self.templatePath()}\\`,
 			src: `${self.templatePath()}\\src\\`,
 			scripts: `${self.templatePath()}\\scripts\\`,
-			utilities: `${self.templatePath()}\\utilities\\`
+            utilities: `${self.templatePath()}\\utilities\\`,
+            cypress: `${self.templatePath()}\\cypress\\`,
+            '.vscode': `${self.templatePath()}\\.vscode\\`
 		},
 		dest: {
 			config: `${self.destinationPath()}\\config\\`,
 			root: `${self.destinationPath()}\\`,
 			src: `${self.destinationPath()}\\src\\`,
 			scripts: `${self.destinationPath()}\\scripts\\`,
-			utilities: `${self.destinationPath()}\\src\\utilities\\`
+            utilities: `${self.destinationPath()}\\src\\utilities\\`,
+            cypress: `${self.destinationPath()}\\cypress\\`,
+            '.vscode': `${self.destinationPath()}\\.vscode\\`
 		}
 	}
 };
@@ -141,10 +146,18 @@ module.exports = class extends Generator {
     		this._logActionComplete(action);
         };
 
+        const writeFiles = () => {
+    		const action = 'Writing files';
+    		this._logActionStart(action);
+    		fs.writeFile('.env','API_URL=https://swapi.co/api', () => {
+                this._logActionComplete(action);
+            });
+        };
+
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
-    		const dirsToCopy = ['config', 'src', 'scripts', 'cypress'];
+    		const dirsToCopy = ['config', 'src', 'scripts', 'cypress', '.vscode'];
     		dirsToCopy.forEach(dir => {
     			this.fs.copy(
     				`${dirs(this).src[dir]}**\\*`,
@@ -161,6 +174,7 @@ module.exports = class extends Generator {
     	};
 
         copyFiles();
+        writeFiles();
         copyDirs();
 
     };
@@ -181,7 +195,7 @@ module.exports = class extends Generator {
 			'*                              *\n' +
             '********************************\n';
         this.log(message);
-		this.spawnCommand('npm run', ['start:dev']);
+        this.spawnCommand('npm run', ['start:dev']);
     };
 
 };
