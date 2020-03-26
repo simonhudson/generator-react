@@ -127,7 +127,8 @@ module.exports = class extends Generator {
 				'nodemon.json',
 				'package.json',
 				'README.md',
-				'webpack.config.js'
+                'webpack.config.js',
+                'cypress.json'
 			];
     		files.forEach(file => {
     			let destinationDir = dirs(this).dest.root;
@@ -143,7 +144,7 @@ module.exports = class extends Generator {
     	const copyDirs = () => {
     		const action = 'Copy directories';
     		this._logActionStart(action);
-    		const dirsToCopy = ['config', 'src', 'scripts'];
+    		const dirsToCopy = ['config', 'src', 'scripts', 'cypress'];
     		dirsToCopy.forEach(dir => {
     			this.fs.copy(
     				`${dirs(this).src[dir]}**\\*`,
