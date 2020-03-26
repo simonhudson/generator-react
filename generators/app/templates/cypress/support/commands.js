@@ -31,13 +31,25 @@ Cypress.Commands.add('openPage', page => {
 });
 
 Cypress.Commands.add('setMobile', (isLandscape = false) => {
-    cy.viewport(breakpoints.phone.width, breakpoints.phone.height, isLandscape ? 'landscape' : 'portrait');
+    const width = isLandscape
+        ? breakpoints.phone.height
+        : breakpoints.phone.width;
+    const height = isLandscape
+        ? breakpoints.phone.width
+        : breakpoints.phone.height;
+    cy.viewport(width, height);
 });
 
 Cypress.Commands.add('setTablet', (isLandscape = false) => {
-    cy.viewport(breakpoints.tablet.width, breakpoints.tablet.height, isLandscape ? 'landscape' : 'portrait');
+    const width = isLandscape
+        ? breakpoints.tablet.height
+        : breakpoints.tablet.width;
+    const height = isLandscape
+        ? breakpoints.tablet.width
+        : breakpoints.tablet.height;
+    cy.viewport(width, height);
 });
 
 Cypress.Commands.add('setDesktop', () => {
-    cy.viewport(breakpoints.desktop.width, breakpoints.desktop.height, breakpoints.desktop.height);
+    cy.viewport(breakpoints.desktop.width, breakpoints.desktop.height);
 });

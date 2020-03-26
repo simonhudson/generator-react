@@ -1,7 +1,7 @@
 'use strict';
 
-import { mainNavigation } from '../config/selectors';
-import { breakpoints } from '../config';
+import { mainNavigation } from '../../../config/selectors';
+import { breakpoints } from '../../../config';
 
 beforeEach(() => {
     cy.openPage('home');
