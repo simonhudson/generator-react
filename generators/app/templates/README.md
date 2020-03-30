@@ -1,4 +1,4 @@
-# <%= projectName %>
+# Acme Project
 
 ## Prerequisites
 - Node v8.15.1

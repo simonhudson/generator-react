@@ -7,26 +7,29 @@ import FormRow from '~/components/form/form-row';
 import '../css/styles.scss';
 
 const NumberSelect = props => {
+    if (!props.id || !props.labelText || !props.max) return null;
 
-	if (!props.id || !props.labelText || !props.max) return null;
+    let min = props.min || 0;
 
-	let min = props.min || 0;
+    const generateOptions = () => {
+        let options = [];
+        for (let i = min; i <= props.max; i++)
+            options.push(<Option key={i} value={i} text={i} />);
+        return props.descending ? options.reverse() : options;
+    };
 
-	const generateOptions = () => {
-		let options = [];
-		for (let i=min; i <= props.max; i++) options.push(<Option key={i} value={i} text={i} />);
-		return props.descending ? options.reverse() : options;
-	};
-
-	return (
-		<FormRow>
-			<Label {...props} />
-			<select data-test="number-select" id={props.id}>
-				{generateOptions()}
-			</select>
-		</FormRow>
-	);
-
+    return (
+        <FormRow>
+            <Label {...props} />
+            <select
+                data-test="number-select"
+                id={props.id}
+                name={props.name ? props.name : props.id}
+            >
+                {generateOptions()}
+            </select>
+        </FormRow>
+    );
 };
 
 export default NumberSelect;

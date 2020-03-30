@@ -1,0 +1,7 @@
+{
+  "generator-react": {
+    "projectName": "Acme Project",
+    "projectNameSlug": "acme-project",
+    "copyUtilities": "y"
+  }
+}
